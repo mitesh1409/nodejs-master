@@ -6,5 +6,3 @@
 
 
 git add . && git commit -m "🚀" && git push
-
-[ ] Clone Stateful Authentication Demo and implement stateless authentication
