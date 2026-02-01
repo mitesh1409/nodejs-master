@@ -45,6 +45,9 @@ Things that are not part of the "V8 JavaScript Engine" like
 and so on...
 they are handled by "libuv".
 
+**The Node.js System**  
+![The Node.js System](images/the-nodejs-system.png "The Node.js System")
+
 **Is Web browser a JavaScript runtime?**  
 Yes
 A browser contains a Javascript Engine (for example Chrome's v8).
