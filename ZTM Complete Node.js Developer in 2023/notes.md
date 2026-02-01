@@ -167,7 +167,7 @@ It is not suitable for writing bigger application or script.
 Install VS Code Editor.
 
 **Extensions**  
-Install "Visual Studio IntelliCode" extension.
+Install "GitHub Copilot Chat" extension.
 
 ---
 
