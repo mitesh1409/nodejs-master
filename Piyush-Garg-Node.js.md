@@ -1,24 +1,6 @@
 # Piyush Garg - Node.js Series
 
-## How NodeJS Works? - You don't Know NodeJS
-
-https://www.youtube.com/watch?v=_eJ6KAb56Gw
-
-Example:  
-
-```javascript
-import fs from 'node:fs';
-
-setTimeout(() => console.log('setTimeout callback...'), 0);
-
-setImmediate(() => console.log('setImmediate callback...'));
-
-console.log('Last line - End of script');
-```
-
----
-
-## What is Node.js?
+## #1 What is Node.js?
 
 Node.js = V8 + libuv
 
@@ -26,7 +8,7 @@ V8
 JavaScript Engine which executes JavaScript code.
 
 libuv
-libuv is a multi-platform support library with a focus on asynchronous I⁠/⁠O.
+libuv is a multi-platform support library with a focus on asynchronous I/O.
 Written in C.
 
 How the following things work together?
@@ -43,9 +25,69 @@ Node.js APIs
 Main Thread
 Thread Pool
 
+Node.js REPL
+
 ---
 
-## How Node.js code is executed?
+## #2 Node.js Installation
+
+Install Node.js & NPM.
+
+There are two types of Node.js versions:
+* LTS (even numbers)
+* Current/Non-LTS (odd numbers)
+
+nvm (Node Version Manager)
+
+---
+
+## #3 Hello World Node.js
+
+---
+
+## #4 Modules in Node.js
+
+There are 3 types of modules in Node.js:
+
+* Built-in - e.g., http, https, os, fs etc.
+* 3rd party - express, dotenv, lodash etc.
+* Custom - developed by developers for the application.
+
+---
+
+## #5 File Handling in Node.js
+
+Challenge: Read/Write data from/to big files (>= 10GB).
+Challenge: CSV file processing.
+
+Synchronous & Asynchronous versions of Node.js APIs.
+
+Make sure you use Asynchronous version of Node.js APIs in case of blocking operations.
+
+---
+
+## #6 How NodeJS Works? - You don't Know NodeJS
+
+https://www.youtube.com/watch?v=_eJ6KAb56Gw
+
+### What is Node.js?
+
+Node.js = V8 + libuv
+
+V8
+JavaScript Engine which executes JavaScript code.
+
+libuv
+libuv is a multi-platform support library with a focus on asynchronous I⁠/⁠O.
+Written in C.
+
+JavaScript is single threaded language.
+
+libuv provides Event Loop & Thread Pool.
+
+### How Node.js code is executed?
+
+Check ChatGPT or Gemini conversation done earlier for this topic.
 
 #1
 Node.js creates a "Process".
@@ -65,7 +107,7 @@ Top level code is executed synchronously (line by line from top to bottom).
 Top level code = the code which is not part of any function or callback. The code which is part of Global Execution Context.
 
 As per my understanding, following should be correct with this step:
-This means Code Execution phase of the Global Context is done.
+This means Code Execution phase of the Global Execution Context is done.
 
 #4
 Require/imported modules are executed.
@@ -76,7 +118,7 @@ Require/imported modules are executed.
 #6
 Start "Event Loop".
 
-## Thread Pool
+### Thread Pool
 
 For CPU intensive tasks like
 
@@ -102,7 +144,7 @@ Up to 128 threads
 We can controll the number of threads.
 N threads = N things can happen in parallel
 
-## Event Loop
+### Event Loop
 
 Event Loop is running.
 
@@ -112,12 +154,84 @@ Expired timer callbacks are given priority.
 I/O Polling (FS Callbacks).
 setImmediate callbacks.
 Close callbacks.
+
+OR
+
+timers
+pending callbacks
+idle, prepare
+poll
+check
+close callbacks
+
 Is there anything Pending?
     No -> then Event Loop exits.
     Yes -> Event Loop continues...
 
 Promise Callbacks?
 Whenever Event Loop phase transitions.
+
+Example:  
+
+```javascript
+import fs from 'node:fs';
+
+setTimeout(() => console.log('setTimeout callback...'), 0);
+
+setImmediate(() => console.log('setImmediate callback...'));
+
+console.log('Last line - End of script');
+```
+
+### Todos
+
+#1
+Hands on example which covers all the Callback/Task Queues & Microtask/Priority Queue.
+Observe callstack.
+Observe using https://www.jsv9000.app/.
+
+Simple example.
+Nested callbacks example.
+
+Thread Pool example.
+
+```JavaScript
+
+// Control Thread Pool size.
+process.env.UV_THREADPOOL_SIZE = 2;
+
+// Server start time.
+const start = Date.now();
+
+// Time taken
+// Date.now() - start
+
+// CPU intensive operation/task.
+crypto.pbkdf2('password1', 'salt1', 100000, 1024, 'sha512', () => { 
+  console.log(`${Date.now() - start}ms`, 'password1 DONE!')
+})
+crypto.pbkdf2('password2', 'salt2', 100000, 1024, 'sha512', () => { 
+  console.log(`${Date.now() - start}ms`, 'password2 DONE!')
+})
+crypto.pbkdf2('password3', 'salt3', 100000, 1024, 'sha512', () => { 
+  console.log(`${Date.now() - start}ms`, 'password3 DONE!')
+})
+crypto.pbkdf2('password4', 'salt4', 100000, 1024, 'sha512', () => { 
+  console.log(`${Date.now() - start}ms`, 'password4 DONE!')
+})
+
+```
+
+#2
+Prepare final notes, refer earlier conversation with ChatGPT/Gemini.
+Add diagrams.
+Difference between Browser and Node.js execution, is there any difference or both are the same?
+
+#3
+Refer Node.js Documentation.
+
+#4
+How Node.js is different from other multi-threading languages (C, C++, Java, Go etc.)?
 
 ---
 
