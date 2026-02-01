@@ -118,6 +118,27 @@ nvm = Node Version Manager
 
 ---
 
+## #12 The Node.js Release Cycle
+
+Current Version
+
+* Offers latest features
+* Less stable compared to LTS version
+* Not recommended for production
+* Has an odd number
+
+LTS Version
+
+* More stable
+* Recommended for production
+* Has an even number
+
+**Refer**
+
+- [Node.js Releases](https://nodejs.org/en/about/previous-releases)
+
+---
+
 ## #13 The Node.js REPL
 
 **REPL**  
