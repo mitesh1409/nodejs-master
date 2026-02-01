@@ -109,6 +109,7 @@ Current versions are odd numbers.
 
 **nvm**  
 To manage multiple node.js versions on our machine we can use "nvm" tool.
+nvm = Node Version Manager
 
 **Refer**
 
