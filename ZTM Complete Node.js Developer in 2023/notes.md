@@ -120,14 +120,14 @@ nvm = Node Version Manager
 
 ## #12 The Node.js Release Cycle
 
-Current Version
+**Current Version**
 
 * Offers latest features
 * Less stable compared to LTS version
 * Not recommended for production
 * Has an odd number
 
-LTS Version
+**LTS Version**
 
 * More stable
 * Recommended for production
@@ -180,6 +180,7 @@ Use `process.argv` to read arguments.
 Check "1-first-app" application.
 
 **Refer**  
+
 [process.argv](https://nodejs.org/docs/latest/api/process.html#processargv)
 
 ---

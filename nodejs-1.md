@@ -4,19 +4,19 @@
 
 Topics
 
-- What is Node.js?
-- Node.js Architecture
-- How Node.js code is executed
-- How Node.js is different from other multi-threading languages (C, C++, Java, Go etc.)?
-- Difference between Browser and Node.js execution, is there any difference or both are the same?
-- Reference link of the official Node.js documentation
-- Code example with same level callbacks
-- Code example with nested level callbacks
-- Code example for Thread Pool
+1. What is Node.js?
+2. Node.js Architecture
+3. How Node.js code is executed
+4. How Node.js is different from other multi-threading languages (C, C++, Java, Go etc.)?
+5. Difference between Browser and Node.js execution, is there any difference or both are the same?
+6. Reference link of the official Node.js documentation
+7. Code example with same level callbacks
+8. Code example with nested level callbacks
+9. Code example for Thread Pool
 
 ---
 
-### What is Node.js?
+## #1 What is Node.js?
 
 Node.js = V8 + libuv
 
