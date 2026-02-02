@@ -1,0 +1,23 @@
+{
+  "name": "23-hello-expressjs",
+  "version": "1.0.0",
+  "description": "Hello Express.js",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Express.js"
+  ],
+  "author": "Mitesh Prajapati",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "hbs": "^4.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "planets-project",
+  "version": "1.0.0",
+  "description": "Planets Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "planets-project"
+  ],
+  "author": "Mitesh Prajapati",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parse": "^5.3.5"
+  }
+}
