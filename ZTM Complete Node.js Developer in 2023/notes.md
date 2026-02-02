@@ -326,6 +326,9 @@ libuv is a multi-platform support library with a focus on asynchronous I/O. It w
 Node.js allows us to use "libuv" by connecting to it with Node.js bindings.
 Apart from Node.js, libuv is used by many others.
 
+Check "src/win" folder for the Windows implementations.
+Check "src/unix" folder for the Linux/Mac implementations.
+
 **Refer**  
 
 - [libuv](http://libuv.org/)
