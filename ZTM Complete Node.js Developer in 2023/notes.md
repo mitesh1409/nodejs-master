@@ -440,6 +440,9 @@ Threads execute side-by-side and independently, they don't interfere with each o
 
 So using multiple threads, processes can execute their code asynchronously.
 
+When a CPU has multiple chores, each chore can execute one thread.
+So if a CPU has 4 chores, then it can execute 4 threads simultaneously.
+
 ![Processes & Threads](images/processes-and-threads.png "Processes & Threads")
 
 > JavaScript is a single threaded programming language.
