@@ -177,7 +177,7 @@ Install "GitHub Copilot Chat" extension.
 Use `process.argv` to read arguments.
 
 **Code Examples**  
-Check "1-first-app" application.
+Check "apps/1-first-app" application.
 
 **Refer**  
 
