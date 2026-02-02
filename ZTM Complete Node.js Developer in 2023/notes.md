@@ -459,7 +459,7 @@ In Node.js we have one main thread which runs
 
 - the V8 JavaScript engine
 - Node.js APIs
-- libuv (event loop)
+- libuv (Event Loop + Thread Pool)
 
 **libuv & Thread Pool**  
 libuv handles Asynchronous I/O
