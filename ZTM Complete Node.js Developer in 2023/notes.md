@@ -680,7 +680,7 @@ The `EventEmitter` object has two methods
 - `emit()` method is used to trigger the event
 
 **Code Examples**  
-Check "4-event-app" application.
+Check "apps/4-event-app" application.
 
 **Refer**  
 
@@ -829,8 +829,8 @@ OR the other way is once Promise is fulfilled or rejected then we take next step
 So we attach "then()" and provide a callback to perform next steps.
 
 **Code Examples**  
-Check "5-resolved-rejected-promises" application.  
-Check "6-multiple-promises" application.
+Check "apps/5-resolved-rejected-promises" application.  
+Check "apps/6-multiple-promises" application.
 
 **Refer**  
 [SWAPI - Star Wars API Integrations](https://pipedream.com/apps/swapi)
