@@ -765,7 +765,8 @@ Some examples of the nested callbacks are as below:
 "Callback pyramid of doom"
 
 Example #1
-```
+
+```JavaScript
 grabTweets('twitter/johnwick', (error, johnWickTweets) => {
     if (error) {
         throw Error;
@@ -792,7 +793,8 @@ grabTweets('twitter/johnwick', (error, johnWickTweets) => {
 ```
 
 Example #2
-```
+
+```JavaScript
 movePlayer(100, 'Left', function() {
     movePlayer(400, 'Left', function() {
         movePlayer(10, 'Right', function() {
@@ -807,7 +809,8 @@ movePlayer(100, 'Left', function() {
 Using Promises we can rewrite the above examples as follows:
 
 Example #2
-```
+
+```JavaScript
 movePlayer(100, 'Left')
     .then(() => movePlayer(400, 'Left'))
     .then(() => movePlayer(10, 'Right'))
