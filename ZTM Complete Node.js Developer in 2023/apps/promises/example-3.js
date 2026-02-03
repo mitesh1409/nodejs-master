@@ -13,22 +13,39 @@ Step-3: In some cases either a driver or a customer may reject the ride request,
 At the end Promise is settled, either "Fulfilled" or "Rejected".
 */
 
-const ride = new Promise((resolve, reject) => {
+console.log('Started...');
+
+const rideRequest = new Promise((resolve, reject) => {
     // Async code goes here
     // Create a ride request.
     // Find a driver for the requested ride.
     // Check if either driver or customer has rejected the ride request.
 
-    let driverArrived = false;
+    console.log('Promise executor started...');
 
-    if (driverArrived) {
-        resolve('Driver arrived :) Happy journey!');
-    } else {
-        reject('Driver denied your ride request! We are sorry :( Please try again.');
-    }
+    // Synchronous
+    // let driverArrived = false;
+
+    // if (driverArrived) {
+    //     resolve('Driver arrived :) Happy journey!');
+    // } else {
+    //     reject('Driver denied your ride request! We are sorry :( Please try again.');
+    // }
+
+    // Asynchronous
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(jsonResponse => {
+            console.log('JSON Response', jsonResponse);
+            resolve('Driver arrived :) Happy journey!');
+        });
+
+    console.log('Promise executor ended...');
 });
 
-ride
+console.log('rideRequest', rideRequest);
+
+rideRequest
     .then((data) => {
         console.log('Promise Fulfilled with data = ', data);
     })
@@ -39,3 +56,5 @@ ride
     .finally(() => {
         console.log('Promise Settled');
     });
+
+console.log('Ended...');
