@@ -3,6 +3,16 @@ const EventEmitter = require('events');
 // Subject - Celebrity Keanu Reeves will emit events about his life/movies.
 const keanuReeves = new EventEmitter();
 
+// Emitting events before registering listeners.
+// Here listeners won't be called.
+
+// // There are two observers for this event.
+// keanuReeves.emit('John Wick Trailer Launch Event');
+// // No observers for this event.
+// keanuReeves.emit('At Cannes Film Festival');
+// // There are two observers for this event.
+// keanuReeves.emit('John Wick Trailer Launch Event');
+
 // Observer - Observer 1 subscribed to Keanu Reeves > John Wick Trailer Launch Event.
 keanuReeves.on(
     'John Wick Trailer Launch Event',
@@ -18,6 +28,9 @@ keanuReeves.on(
         console.log('Trailer is awesome ;) Very much excited for the movie!');
     }
 );
+
+// Emitting events after registering listeners.
+// Listeners will be called one by one, synchronously, in the order they were registered.
 
 // There are two observers for this event.
 keanuReeves.emit('John Wick Trailer Launch Event');
