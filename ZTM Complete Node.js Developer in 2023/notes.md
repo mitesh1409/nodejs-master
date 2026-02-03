@@ -1,6 +1,8 @@
 # Complete Node.js Developer by ZTM Udemy
 
-## #4 Node.js - How We Got Here
+## Section 1: Introduction
+
+### #4 Node.js - How We Got Here
 
 **Where do we run JavaScript code?**  
 We execute JavaScript code inside browsers (Chrome, Safari, Firefox etc.).
@@ -22,7 +24,7 @@ Using Node.js we can run JavaScript outside of the browser.
 
 ---
 
-## #5 Node.js Runtime
+### #5 Node.js Runtime
 
 **What is Node.js?**
 > Node.js is a JavaScript runtime,
@@ -73,7 +75,7 @@ Here are good video lessons that breaks this all down:
 
 ---
 
-## #8 Course Projects + Code + Resources
+### #8 Course Projects + Code + Resources
 
 **GitHub links for the cource projects**
 
@@ -88,7 +90,7 @@ Here are good video lessons that breaks this all down:
 
 ---
 
-## #9 ZTM Resources
+### #9 ZTM Resources
 
 - https://zerotomastery.io/
 - https://zerotomastery.io/cheatsheets/
@@ -98,7 +100,9 @@ Here are good video lessons that breaks this all down:
 
 ---
 
-## #10 Installing Node.js
+## Section 2: Node.js Fundamentals: Foundations and Environment Setup
+
+### #10 Installing Node.js
 
 **LTS vs Current**  
 We should use LTS version.
@@ -118,7 +122,7 @@ nvm = Node Version Manager
 
 ---
 
-## #12 The Node.js Release Cycle
+### #12 The Node.js Release Cycle
 
 **Current Version**
 
@@ -139,7 +143,7 @@ nvm = Node Version Manager
 
 ---
 
-## #13 The Node.js REPL
+### #13 The Node.js REPL
 
 **REPL**  
 REPL stands for
@@ -161,7 +165,7 @@ It is not suitable for writing bigger application or script.
 
 ---
 
-## #15 Setting Up Our Developer Environment
+### #15 Setting Up Our Developer Environment
 
 **Visual Studio Code Editor**  
 Install VS Code Editor.
@@ -171,7 +175,7 @@ Install "GitHub Copilot Chat" extension.
 
 ---
 
-## #16 Our First Node.js App
+### #16 Our First Node.js App
 
 **process.argv**  
 Use `process.argv` to read arguments.
@@ -185,7 +189,7 @@ Check "apps/1-first-app" application.
 
 ---
 
-## #17 Node.js Vs JavaScript
+### #17 Node.js Vs JavaScript
 
 **Difference between Node.js & Browser**  
 Browser specific objects are not available inside Node.js.
@@ -213,7 +217,7 @@ It does not contain browser specific objects like "window", "document" etc.
 
 ---
 
-## #18 The `global` Object
+### #18 The `global` Object
 
 **Globals**  
 Explore the `global` object in Node.js.
@@ -222,7 +226,7 @@ Explore the `global` object in Node.js.
 
 ---
 
-## #19 Introduction to Back-end Vs Front-end
+### #19 Introduction to Back-end Vs Front-end
 
 **Back-end -> Node.js**  
 Node.js is used to create back-end servers for web/mobile applications.
@@ -241,7 +245,7 @@ Client and server communicates using HTTP/HTTPS protocol.
 
 ---
 
-## #20 Monthly Coding Challenges, Free Resources & Guides
+### #20 Monthly Coding Challenges, Free Resources & Guides
 
 **Refer**
 
@@ -251,7 +255,9 @@ Client and server communicates using HTTP/HTTPS protocol.
 
 ---
 
-## #21 What Node.js Includes
+## Section 3: Node.js Fundamentals: Internals
+
+### #21 What Node.js Includes
 
 **What Node.js includes?**  
 Node.js is made up of
@@ -269,7 +275,7 @@ Node.js is made up of
 
 ---
 
-## #22 Node.js Internals Deep Dive
+### #22 Node.js Internals Deep Dive
 
 **Node.js GitHub Repo**  
 Explore Node.js GitHub Repo.
@@ -319,7 +325,7 @@ These are all references to libuv.
 
 ---
 
-## #23 libuv Internals Deep Dive
+### #23 libuv Internals Deep Dive
 
 **What is libuv?**  
 libuv is a multi-platform support library with a focus on asynchronous I/O. It was primarily developed for use by Node.js, but it's also used by Luvit, Julia, uvloop, and others.
@@ -336,7 +342,7 @@ Check "src/unix" folder for the Linux/Mac implementations.
 
 ---
 
-## #24 Synchronous vs Asynchronous
+### #24 Synchronous vs Asynchronous
 
 **What is Synchronous & Asynchronous execution?**  
 In programming "Synchronous" means - the code that runs line by line or in sequence.
@@ -355,7 +361,7 @@ Check "2-second-app" application.
 
 ---
 
-## #25 Asynchronous Callbacks
+### #25 Asynchronous Callbacks
 
 **What is Asynchronous Callbacks?**
 Callback is a function that is set to execute once an event occurs.
@@ -373,7 +379,7 @@ Check "3-async-app" application.
 
 ---
 
-## #26 Non-Blocking Input & Output
+### #26 Non-Blocking Input & Output
 
 **Blocking Function**  
 
@@ -408,7 +414,7 @@ etc.
 
 ---
 
-## #27 Exercise: Is JavaScript Asynchronous?
+### #27 Exercise: Is JavaScript Asynchronous?
 
 **Is JavaScript Asynchronous?**  
 JavaScript itself is a Synchronous language.
@@ -427,7 +433,7 @@ NOTE: Promise/fetch are part of JavaScript since ES6, using it we can write Asyn
 
 ---
 
-## #28 Multi-Threading, Processes & Threads
+### #28 Multi-Threading, Processes & Threads
 
 **Processes**  
 Processes are containers, that contain your Code.
@@ -449,7 +455,7 @@ So if a CPU has 4 chores, then it can execute 4 threads simultaneously.
 
 ---
 
-## #29 Is Node.js Multi-Threaded?
+### #29 Is Node.js Multi-Threaded?
 
 **The Main Thread**  
 JavaScript is a single threaded programming language.
@@ -516,7 +522,7 @@ It allows developer to focus more on the application, it also simplifies how you
 
 ---
 
-## #30 The Event Loop
+### #30 The Event Loop
 
 **What is Event Loop?**  
 The Event Loop is the most important part of the Node.js runtime.
@@ -559,7 +565,7 @@ while (appIsOn) {
 
 ---
 
-## #31 Callback Queues
+### #31 Callback Queues
 
 **What is a Callback Queue?**  
 When ready for execution, callbacks are put on the callback queue.
@@ -575,7 +581,7 @@ Other terms for the callback queue are "Event Queue"/"Message Queue".
 
 ---
 
-## #32 Phases of the Event Loop
+### #32 Phases of the Event Loop
 
 **4 Main Phases of the Event Loop**  
 There is no one callback queue, there are multiple callback queues.
@@ -610,7 +616,7 @@ executes callbacks for all of them.
 
 ---
 
-## #33 Comparing Node.js With PHP & Python
+### #33 Comparing Node.js With PHP & Python
 
 **Node.js Vs PHP/Python**  
 PHP & Python are high level "single threaded" languages.
@@ -636,7 +642,7 @@ Node.js doesn't need a server like Apache to handle multiple client requests.
 
 ---
 
-## #34 What Is Node.js Best At?
+### #34 What Is Node.js Best At?
 
 **Node.js is best at creating Web Servers**  
 Node.js is best at creating web servers.
@@ -654,7 +660,7 @@ Node.js is not good at
 
 ---
 
-## #35 Observer Design Pattern
+### #35 Observer Design Pattern
 
 **About Observer Design Pattern?**
 We make use of "Observer Design Pattern" to deal with Asynchronous events.
@@ -689,7 +695,7 @@ its "Observers" are notified about it.
 
 ---
 
-## #36 The Node.js Event Emitter
+### #36 The Node.js Event Emitter
 
 **Events Module**  
 Node.js has built-in module that helps us to work with events - "Events" module.
@@ -710,6 +716,89 @@ Check "apps/4-event-app" application.
 
 - [Events](https://nodejs.org/api/events.html#events_events)
 - [Process events](https://nodejs.org/api/process.html#process-events)
+
+---
+
+## Appendix: How JavaScript Works
+
+### #353 JavaScript Engine
+
+JavaScript Engine OR ECMAScript Engine
+Using JavaScript Engine computer can understand JavaScript code.
+OR
+Using JavaScript Engine we can execute JavaScript code.
+
+Examples of JavaScript Engine
+- V8 for Google Chrome
+- SpiderMonkey for Mozilla Firefox
+- JavaScriptCore for Apple Safari
+
+**Who created the first JavaScript Engine?**  
+
+The first JavaScript engine, named SpiderMonkey, was created by Brendan Eich while he was working at Netscape Communications Corporation in 1995. This engine was an interpreter for the JavaScript language (initially called Mocha, then LiveScript) within the Netscape Navigator web browser.  
+
+Brendan Eich designed JavaScript in just ten days to add dynamic and interactive features to static HTML web pages. The language and its original SpiderMonkey engine were written in the C programming language.  
+
+The SpiderMonkey engine is still in use today, primarily in the Mozilla Firefox browser and other Mozilla-based applications. Modern JavaScript engines, including SpiderMonkey, are much more advanced and use just-in-time (JIT) compilation for improved performance compared to the original interpreter.
+
+---
+
+### #355 Inside the JavaScript Engine
+
+**Inside JavaScript Engine**
+
+![Inside JavaScript Engine](./images/javascript-engine.png "Inside JavaScript Engine")
+
+JavaScript Code ---- Input ----> JavaScript Engine
+-> Parsing
+-> AST
+-> Interpreter -> Bytecode
+OR
+-> Interpreter -> Profiler -> Compiler -> Optimized Code
+
+When JavaScript Code is given as input to JavaScript Engine:
+* First it does lexical analysis, which breaks the code into tokens to identify their meanings so that we know what the code is trying to do.
+* These tokens form an AST (Abstract Syntax Tree). Try [AST Explorer](https://astexplorer.net/) to get an idea.
+* Then comes Interpreter.
+
+**Reference**
+
+* [AST Explorer](https://astexplorer.net/)
+
+---
+
+### #356 JavaScript Engine for all
+
+Since everybody can create their own JavaScript Engine,  
+it will just be total chaos if there are no standards followed.
+
+Which is why ECMAScript was created to standardize JavaScript Engines.
+
+ECMAScript tells people, here is the standard way to do things in JavaScript,  
+it decides how the JavaScript language should be standardized.  
+ECMAScript tells JavaScript Engine creators this is how JavaScript should work,  
+but internally, how you build the engine is up to you as long as it conforms  
+to the standards.
+
+---
+
+### #357 Interpreters and Compilers
+
+In programming, there are two ways to translate programming language into  
+machine language.
+
+* Interpreter
+* Compiler
+
+**Interpreter**
+
+We read & translate the code into machine language line by line on the fly.
+
+**Compiler**
+
+Compiler, like an Interpreter, doesn't translate line by line on the fly.
+But Compiler, works ahead of time to translate whole file into the language  
+that machine can understand.
 
 ---
 
@@ -763,6 +852,9 @@ The Event Loop is a piece of code in libuv that processes Asynchronous events.
 ---
 
 ## #373 Appendix: Asynchronous JavaScript > Promises
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise
 
 **About Promises**  
 Promises are a new feature in JavaScript as of ES6.
