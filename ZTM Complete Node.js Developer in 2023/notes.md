@@ -471,12 +471,36 @@ etc.
 Inside libuv we have thread pool/collection of threads.
 libuv is written in C/C++ which does have threads.
 
+For example, for file system operations which use the Thread Pool,  
+libuv would send the work to one of the threads,  
+this thread then runs independently of all the other threads,  
+this would happen in the background,  
+and when the operation completes the Event Loop will get notified of the result,  
+and then its corresponding callback is pushed into the Callback Queue/Microtask Queue,  
+at the end it is picked by the Event Loop for execution.
+
 ![libuv and Thread Pool](images/libuv-and-threadpool.png "libuv and Thread Pool")
+
+**libuv & OS/Kernel**  
 
 Note that, not all the asynchronous functions are executed in the thread pool.
 Wherever possible libuv uses the operating system kernel directly instead of threads.
 
 ![libuv and OS](images/libuv-and-os.png "libuv and OS")
+
+**Summary of JavaScript Code Execution**
+
+JavaScript Application
+-> Synchronous Code
+    -> Main Thread takes care of it.
+    -> DONE
+-> Asynchronous Code
+    -> libuv takes care of it.
+    -> Offloads to one the threads in the Thread Pool OR OS Kernel (wherever possible).
+    -> Runs in the background.
+    -> Once done, corresponding callback is pushed into the Callback Queue/Microtask Queue.
+    -> At the end this callback is picked by Event Loop for execution.
+    -> DONE
 
 **The Event Loop**  
 Using Event Loop code libuv runs Asynchronous function and
