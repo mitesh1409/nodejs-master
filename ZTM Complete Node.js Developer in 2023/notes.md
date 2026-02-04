@@ -356,8 +356,8 @@ Often times in your program, there will be some "Asynchronous" functions.
 These "Asynchronous" functions run in the background while your JavaScript has already
 moved onto the next line of code.
 
-**Code Examples**
-Check "2-second-app" application.
+**Code Examples**  
+Check "apps/2-second-app" application.
 
 ---
 
@@ -374,8 +374,8 @@ Some real life examples
 - pay your bills when its due date is reached
 etc.
 
-**Code Examples**
-Check "3-async-app" application.
+**Code Examples**  
+Check "apps/3-async-app" application.
 
 ---
 
@@ -417,16 +417,16 @@ etc.
 ### #27 Exercise: Is JavaScript Asynchronous?
 
 **Is JavaScript Asynchronous?**  
-JavaScript itself is a Synchronous language.
+JavaScript itself is a Synchronous language.  
 It executes code line by line, in sequence, synchronously.
 
-But it can be manipulated to behave like an Asynchronous language.
-We can write Asynchronous code, where we are able to execute
+But it can be manipulated to behave like an Asynchronous language.  
+We can write Asynchronous code, where we are able to execute  
 callback function in the future when some event occurs.
 
 Browser and Node.js allows us to write Asynchronous code.
 
-Asynchronous code examples
+Asynchronous code examples  
 `setTimeout`
 
 NOTE: Promise/fetch are part of JavaScript since ES6, using it we can write Asynchrounous code.
@@ -489,35 +489,35 @@ at the end it is picked by the Event Loop for execution.
 
 **libuv & OS/Kernel**  
 
-Note that, not all the asynchronous functions are executed in the thread pool.
+Note that, not all the asynchronous functions are executed in the thread pool.  
 Wherever possible libuv uses the operating system kernel directly instead of threads.
 
 ![libuv and OS](images/libuv-and-os.png "libuv and OS")
 
-**Summary of JavaScript Code Execution**
+**Summary of JavaScript Code Execution**  
 
-JavaScript Application
--> Synchronous Code
-    -> Main Thread takes care of it.
-    -> DONE
--> Asynchronous Code
-    -> libuv takes care of it.
-    -> Offloads to one the threads in the Thread Pool OR OS Kernel (wherever possible).
-    -> Runs in the background.
-    -> Once done, corresponding callback is pushed into the Callback Queue/Microtask Queue.
-    -> At the end this callback is picked by Event Loop for execution.
+JavaScript Application  
+-> Synchronous Code  
+    -> Main Thread takes care of it.  
+    -> DONE  
+-> Asynchronous Code  
+    -> libuv takes care of it.  
+    -> Offloads to one the threads in the Thread Pool OR OS Kernel (wherever possible).  
+    -> Runs in the background.  
+    -> Once done, corresponding callback is pushed into the Callback Queue/Microtask Queue.  
+    -> At the end this callback is picked by Event Loop for execution.  
     -> DONE
 
 **The Event Loop**  
-Using Event Loop code libuv runs Asynchronous function and
+Using Event Loop code libuv runs Asynchronous function and  
 when it is finished it executes the corresponding callback function.
 
-In Node.js whenever we call an Asynchronous function from JavaScript
+In Node.js whenever we call an Asynchronous function from JavaScript  
 it is put on the Event Loop.
 
-JavaScript executes on the main thread and any Asynchronous functions are put on the Event Loop.
+JavaScript executes on the main thread and any Asynchronous functions are put on the Event Loop.  
 
-As a Node.js developer we never have to worry about managing multiple threads.
+As a Node.js developer we never have to worry about managing multiple threads.  
 It allows developer to focus more on the application, it also simplifies how you write code.
 
 ---
