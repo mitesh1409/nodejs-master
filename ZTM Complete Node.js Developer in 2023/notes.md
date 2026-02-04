@@ -498,15 +498,15 @@ Wherever possible libuv uses the operating system kernel directly instead of thr
 
 JavaScript Application  
 -> Synchronous Code  
-    -> Main Thread takes care of it.  
-    -> DONE  
+    - Main Thread takes care of it.  
+    - DONE  
 -> Asynchronous Code  
-    -> libuv takes care of it.  
-    -> Offloads to one the threads in the Thread Pool OR OS Kernel (wherever possible).  
-    -> Runs in the background.  
-    -> Once done, corresponding callback is pushed into the Callback Queue/Microtask Queue.  
-    -> At the end this callback is picked by Event Loop for execution.  
-    -> DONE
+    - libuv takes care of it.  
+    - Offloads to one the threads in the Thread Pool OR OS Kernel (wherever possible).  
+    - Runs in the background.  
+    - Once done, corresponding callback is pushed into the Callback Queue/Microtask Queue.  
+    - At the end this callback is picked by Event Loop for execution.  
+    - DONE
 
 **The Event Loop**  
 Using Event Loop code libuv runs Asynchronous function and  
