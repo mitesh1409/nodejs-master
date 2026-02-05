@@ -1082,7 +1082,9 @@ that lets developers create servers, web apps, command line tools and scripts.
 
 ---
 
-## #372 Appendix: Asynchronous JavaScript > Section Overview
+## Appendix: Asynchronous JavaScript
+
+### #372 Section Overview
 
 **Asynchronous JavaScript Topics**  
 
@@ -1131,7 +1133,7 @@ The Event Loop is a piece of code in libuv that processes Asynchronous events.
 
 ---
 
-## #373 Appendix: Asynchronous JavaScript > Promises
+## #373 Promises
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise
@@ -1149,7 +1151,7 @@ Asynchronous code in JavaScript.
 A promise can be in any one of the following stats:
 
 - Pending
-- Fulfilled
+- Resolved/Fulfilled
 - Rejected
 
 **Promises Vs Callbacks**  
@@ -1236,7 +1238,7 @@ Check "apps/6-multiple-promises" application.
 
 ---
 
-## #374 Appendix: Asynchronous JavaScript > ES8 - `async`, `await`
+## #374 ES8 - `async`, `await`
 
 **About `async`, `await`**  
 `async`, `await` are part of ES8 and they are built on top of Promises.
@@ -1245,6 +1247,10 @@ An async function returns a Promise.
 
 `async`, `await` makes the Asynchronous code look like the Synchronous code,
 which is even more readable.
+
+`async` `await` code are just Promises underneath the hood, they are just syntactic sugar.  
+We call the syntactic sugar something that still does the same thing,  
+but it's just different syntax to make it look prettier.
 
 Examples
 
@@ -1284,11 +1290,11 @@ fetchUsers(); // this will execute asynchronously
 ```
 
 **Code Examples**  
-Check "7-async-await" application.
+Check "apps/7-async-await" application.
 
 ---
 
-## #375 Appendix: Asynchronous JavaScript > ES9 (ES2018)
+## #375 ES9 (ES2018)
 
 **Object Spread Operator**  
 [Spread syntax (...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
@@ -1298,19 +1304,19 @@ Check "8-object-spread-operator" application.
 
 ---
 
-## #376 Appendix: Asynchronous JavaScript > ES9 (ES2018) - Async
+## #376 ES9 (ES2018) - Async
 
 Using `finally` in the Promises.
 
 Using `for await` to loop through the Promises.
 
 **Code Examples**  
-Check "9-promise-finally" application.
-Check "7-async-await" application.
+Check "apps/9-promise-finally" application.
+Check "apps/7-async-await" application.
 
 ---
 
-## #377 Appendix: Asynchronous JavaScript > Job Queue
+## #377 Job Queue
 
 **Microtask Queue Vs Task Queue**  
 Microtask Queue (Job Queue)
@@ -1330,11 +1336,11 @@ setTimeout is a part of the Web API.
 ![JavaScript Runtime](images/javascript-runtime-2.png "JavaScript Runtime")
 
 **Code Examples**  
-Check "3-async-app" application.
+Check "apps/3-async-app" application.
 
 ---
 
-## #378 Appendix: Asynchronous JavaScript > Parallel, Sequence & Race
+## #378 Parallel, Sequence & Race
 
 **3 ways to execute Promises**  
 
@@ -1390,13 +1396,13 @@ so it will take at least 10 + 20 + 30 = 60 milli seconds.
 Race > Parallel > Sequence
 
 **Code Examples**  
-Check "10-promises-parallel" application.
-Check "11-promises-race" application.
-Check "12-promises-sequence" application.
+Check "apps/10-promises-parallel" application.
+Check "apps/11-promises-race" application.
+Check "apps/12-promises-sequence" application.
 
 ---
 
-## #379 Appendix: Asynchronous JavaScript > ES2020: allSettled()
+## #379 ES2020: allSettled()
 
 **`all()` vs `allSettled()`**  
 `allSettled()` in promises is part of ES2020.
@@ -1412,7 +1418,7 @@ When a promise is settled, it can be in either Fulfilled or Rejected status.
 
 `allSettled()` executes all the promises regardless of their status,
 it gives chance to execute all of the promises.
-Whereas `all()` finishes as soon as one of the promises failed to resolve.
+Whereas `all()` finishes (short circuits) as soon as one of the promises failed to resolve.
 
 `allSettled()` returns an array of settled promises.
 When all of the promises resolved `all()` returns an array of result of the resolved promises,
@@ -1420,11 +1426,11 @@ if one or more promises are rejected then `all()` executes catch block to handle
 or throws an exception if catch block is not present.
 
 **Code Examples**  
-Check "13-allSettled" application.
+Check "apps/13-allSettled" application.
 
 ---
 
-## #380 Appendix: Asynchronous JavaScript > Threads, Concurrency & Parallelism
+## #380 Threads, Concurrency & Parallelism
 
 **Threads, Concurrency & Parallelism**  
 A web worker is a JavaScript program running on a different thread in parallel to our main thread.
