@@ -1563,28 +1563,28 @@ Benefits of using this method are,
 
 ---
 
-## #43 CommonJS vs ECMAScript Modules
+### #43 CommonJS vs ECMAScript Modules
 
 **CommonJS vs ECMAScript Modules**  
 
-When we use `require` function, we are using CommonJS modules.
-In other words CommonJS modules are imported using `require` function,
-and they are exported using `module.exports`.
-CommonJS is mostly known for being used in Node.js.
+When we use `require` function, we are using CommonJS modules.  
+In other words CommonJS modules are imported using `require` function,  
+and they are exported using `module.exports`.  
+CommonJS is mostly known for being used in Node.js.  
 It is also used in MongoDB.
 
-CommonJS modules
-import => use `require` function
-export => use `module.exports` statement
-It is used in Node.js and MongoDB.
+CommonJS modules  
+import => use `require` function  
+export => use `module.exports` statement  
+It is used in Node.js and MongoDB.  
 
-ECMAScript Modules are also known as ES6 modules or ESM for short.
-ES6 modules are imported using `import` statements and exported using `export` statement.
+ECMAScript Modules are also known as ES6 modules or ESM for short.  
+ES6 modules are imported using `import` statements and exported using `export` statement.  
 
-ECMAScript Modules/ES6 Modules
-import => use `import` statement
-export => use `export` statement
-It is used in Browser side & Node.js as well.
+ECMAScript Modules/ES6 Modules  
+import => use `import` statement  
+export => use `export` statement  
+It is used in Browser side & Node.js as well.  
 
 **Refer**  
 
@@ -1596,7 +1596,7 @@ It is used in Browser side & Node.js as well.
 
 ---
 
-## #44 Creating Our Own ECMAScript Modules
+### #44 Creating Our Own ECMAScript Modules
 
 **CommonJS module by default**  
 
@@ -1611,7 +1611,7 @@ with .mjs extension, where "m" stands for module.
 To load an ES6 module, set `"type": "module"` in the `package.json` or use the `.mjs` file extension.
 
 **Code Examples**  
-Check "16-es6-modules-examples" application.
+Check "apps/16-es6-modules-examples" application.
 
 **Refer**  
 
@@ -1620,43 +1620,48 @@ Check "16-es6-modules-examples" application.
 
 ---
 
-## #45 Module Caching
+### #45 Module Caching
 
-**About Module Caching**  
+**Module Caching in CommonJS**  
 
 In a large application, it is very likely that we require the same module at multiple places.
 
-Node.js maintains a cache of required modules,
-which is basically a little database of these required modules
-that Node.js checks before loading any module.
+Node.js maintains a cache of required modules,  
+which is basically a little database of these required modules  
+that Node.js checks before loading any module.  
 
-So if the module is already loaded then it will be found in the cache
-and Node.js won't load it again, if the module is not found in cache
-then that module is loaded and then cached.
-That way Node.js ensures that the required modules are loaded only once.
+So if the module is already loaded then it will be found in the cache  
+and Node.js won't load it again, if the module is not found in cache  
+then that module is loaded and then cached.  
+That way Node.js ensures that the required modules are loaded only once.  
 
-This cache is "global" and lives under `require.cache` object.
-We can check it using `console.log(require.cache)`.
+This cache is "global" and lives under `require.cache` object.  
+We can check it using `console.log(require.cache)`.  
 
-Node.js uses built-in module `require` and `require.cache` object to
-implement CommonJS module functionality.
-We can't edit built-in module `require`.
+Node.js uses built-in module `require` and `require.cache` object to  
+implement CommonJS module functionality.  
+We can't edit built-in module `require`.  
 
 **Code Examples**  
-Check "15-modules-example" application.
+Check "apps/15-modules-example" application.  
 
-No, ESM/ES6 Modules in Node.js handle caching differently than CommonJS modules.
+**Module Caching in ESM**  
 
-### How Caching Works with ESM
+ESM/ES6 Modules in Node.js handle caching differently than CommonJS modules.  
 
-ES Modules implement their own caching mechanism that is distinct from the `require.cache` object
-used by CommonJS. Here's how it works:
+ES Modules implement their own caching mechanism that is distinct from the `require.cache` object  
+used by CommonJS.  
+
+Here's how it works:  
 
 - **Module Identity**: Node.js identifies each ES module by its full, resolved URL. When an `import` statement is executed, Node.js checks a module map to see if that URL has already been loaded.
 - **First Import**: The first time a module is imported, Node.js fetches it, parses it, and adds it to the module map.
 - **Subsequent Imports**: Any subsequent `import` statement for the same URL will simply return a reference to the already-loaded module from the map.
 
-Unlike `require.cache`, there is no public, built-in object that you can inspect or manipulate to view the ESM cache. The caching is handled internally by Node.js, providing a more reliable and encapsulated system. This design prevents unintended side effects that could occur from directly modifying a global cache.
+Unlike `require.cache`, there is no public, built-in object that you can inspect or manipulate  
+to view the ESM cache. The caching is handled internally by Node.js, providing a more reliable  
+and encapsulated system. This design prevents unintended side effects that could occur from  
+directly modifying a global cache.
 
 **Refer**  
 
@@ -1664,37 +1669,37 @@ Unlike `require.cache`, there is no public, built-in object that you can inspect
 
 ---
 
-## #46 Using `index.js`
+### #46 Using `index.js`
 
 **How `index.js` inside a folder works**  
 
-`index.js` is a special case in Node.js.
-It allows us to treat a folder like a module.
+`index.js` is a special case in Node.js.  
+It allows us to treat a folder like a module.  
 
-When we pass path to a folder to the `require()` function,
-it results to the `index.js` file inside of that folder.
+When we pass path to a folder to the `require()` function,  
+it results to the `index.js` file inside of that folder.  
 
-The `index.js` file exports an object that contains all the data & functions
-that we want to export from the folder.
+The `index.js` file exports an object that contains all the data & functions  
+that we want to export from the folder.  
 
-The `index.js` allows us to import/export multiple modules grouped into a folder.
+The `index.js` allows us to import/export multiple modules grouped into a folder.  
 
 **Code Examples**  
-Check "17-modules-example-v2" application.
+Check "apps/17-modules-example-v2" application.
 
 ---
 
-## #47 Should We Use `index.js`?
+### #47 Should We Use `index.js`?
 
 **Should We Use `index.js`?**  
 
-This is a controversial subject among Node.js developers.
-Some love to use it and some don't.
+This is a controversial subject among Node.js developers.  
+Some love to use it and some don't.  
 
-It is preferred by many developers - not to use `index.js`.
-"Ryan Dahl" himself pointed out this in his talk "10 Things I Regret About Node.js" about this.
-Things are much more simpler when we don't use `index.js`,
-it just adds additional layer around import/export that we can avoid.
+It is preferred by many developers - not to use `index.js`.  
+"Ryan Dahl" himself pointed out this in his talk "10 Things I Regret About Node.js" about this.  
+Things are much more simpler when we don't use `index.js`,  
+it just adds additional layer around import/export that we can avoid.  
 
 **Refer**  
 
@@ -1703,42 +1708,45 @@ it just adds additional layer around import/export that we can avoid.
 
 ---
 
-## #48 NPM: The Node Package Manager
+## Section 5: Node.js Fundamentals: Package Management
+
+### #48 NPM: The Node Package Manager
 
 **About npm**  
 
-npm is the package manager for Node.js.
+npm is the package manager for Node.js.  
 
-Packages are bundles of code that we can reuse.
+Packages are bundles of code that we can reuse.  
 
-Node.js has really really large ecosystem of libraries, we can find them at [npmjs.com](https://www.npmjs.com/).
+Node.js has really really large ecosystem of libraries,  
+we can find them at [npmjs.com](https://www.npmjs.com/).  
 
-We use "npm" cli tool to manage and work with 3rd party packages in our application.
+We use "npm" cli tool to manage and work with 3rd party packages in our application.  
 
 **Refer**  
 [npmjs.com](https://www.npmjs.com/)
 
 ---
 
-## #49 Creating Our First NPM Package
+### #49 Creating Our First NPM Package
 
 **module vs package**  
 
-A module is a file that contains some code which we can export to use it.
-A package is a collection of modules that have been packaged together to deliver a feature/functionality.
+A module is a file that contains some code which we can export to use it.  
+A package is a collection of modules that have been packaged together to deliver a feature/functionality.  
 
 **Initialize as package**  
 
-Run `npm init` command to initialize our application as an npm package.
-It will create `package.json` file that contains all the necessary information.
+Run `npm init` command to initialize our application as an npm package.  
+It will create `package.json` file that contains all the necessary information.  
 
 **Install a package**  
 
-We can install a package using `npm install` command.
+We can install a package using `npm install` command.  
 
 **Setting up a start script**  
 
-Set a start script to run our application using `npm run start` or `npm start` command.
+Set a start script to run our application using `npm run start` or `npm start` command.  
 
 ```JSON
 /* inside package.json file */
@@ -1751,18 +1759,18 @@ Set a start script to run our application using `npm run start` or `npm start` c
 
 ---
 
-## #50 Packages And The NPM Registry
+### #50 Packages And The NPM Registry
 
 **Packages And The NPM Registry**  
 
-package.json file only exists inside the Node.js packages.
-Most Node.js programs/applications are actually packages.
-They need to be packages in order to make use of other npm packages.
+package.json file only exists inside the Node.js packages.  
+Most Node.js programs/applications are actually packages.  
+They need to be packages in order to make use of other npm packages.  
 
-We might not publish our package on [npmjs.com](https://npmjs.com).
+We might not publish our package on [npmjs.com](https://npmjs.com).  
 
 [npmjs.com](https://npmjs.com) is the registry where many reuseable packages are registered
-and available for free to use to everyone.
+and available for free to use to everyone.  
 
 ---
 
