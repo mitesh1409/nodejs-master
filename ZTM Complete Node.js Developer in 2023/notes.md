@@ -1490,7 +1490,7 @@ Check "apps/14-http-app" application.
 
 ---
 
-## #40 Why Use Modules?
+### #40 Why Use Modules?
 
 **Module and its benefits**  
 
@@ -1514,7 +1514,7 @@ Benefits of using modules:
 
 ---
 
-## #41 Creating Our Own Modules
+### #41 Creating Our Own Modules
 
 **Creating & using modules in our app**  
 
@@ -1538,11 +1538,11 @@ binary .node files is an advanced feature, where we can write add-on in C++
 and import it as a Node.js module.
 
 **Code Examples**  
-Check "15-modules-example" application.
+Check "apps/15-modules-example" application.
 
 ---
 
-## #42 Exporting From Modules
+### #42 Exporting From Modules
 
 **Exporting From Modules**  
 Use the following recommended style to export the things from the module.
