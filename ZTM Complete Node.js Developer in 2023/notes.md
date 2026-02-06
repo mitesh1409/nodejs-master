@@ -1948,6 +1948,9 @@ And it can fix them automatically using `npm audit fix` if there is an available
 If there is no update available for the reported package then we need to switch to  
 an alternative package which is more secure.
 
+Do not ignore issues highlighted by `npm audit`.  
+We should run `npm audit` periodically and fix highlighted issues.  
+
 ---
 
 ### #56 Installing NPM Tools: nodemon
