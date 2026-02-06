@@ -1133,7 +1133,7 @@ The Event Loop is a piece of code in libuv that processes Asynchronous events.
 
 ---
 
-## #373 Promises
+### #373 Promises
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise
@@ -1238,7 +1238,7 @@ Check "apps/6-multiple-promises" application.
 
 ---
 
-## #374 ES8 - `async`, `await`
+### #374 ES8 - `async`, `await`
 
 **About `async`, `await`**  
 `async`, `await` are part of ES8 and they are built on top of Promises.
@@ -1294,7 +1294,7 @@ Check "apps/7-async-await" application.
 
 ---
 
-## #375 ES9 (ES2018)
+### #375 ES9 (ES2018)
 
 **Object Spread Operator**  
 [Spread syntax (...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
@@ -1304,7 +1304,7 @@ Check "8-object-spread-operator" application.
 
 ---
 
-## #376 ES9 (ES2018) - Async
+### #376 ES9 (ES2018) - Async
 
 Using `finally` in the Promises.
 
@@ -1316,7 +1316,7 @@ Check "apps/7-async-await" application.
 
 ---
 
-## #377 Job Queue
+### #377 Job Queue
 
 **Microtask Queue Vs Task Queue**  
 Microtask Queue (Job Queue)
@@ -1340,7 +1340,7 @@ Check "apps/3-async-app" application.
 
 ---
 
-## #378 Parallel, Sequence & Race
+### #378 Parallel, Sequence & Race
 
 **3 ways to execute Promises**  
 
@@ -1402,7 +1402,7 @@ Check "apps/12-promises-sequence" application.
 
 ---
 
-## #379 ES2020: allSettled()
+### #379 ES2020: allSettled()
 
 **`all()` vs `allSettled()`**  
 `allSettled()` in promises is part of ES2020.
@@ -1430,7 +1430,7 @@ Check "apps/13-allSettled" application.
 
 ---
 
-## #380 Threads, Concurrency & Parallelism
+### #380 Threads, Concurrency & Parallelism
 
 **Threads, Concurrency & Parallelism**  
 A web worker is a JavaScript program running on a different thread in parallel to our main thread.
@@ -1457,26 +1457,28 @@ Since there are multiple CPUs, it can execute multiple threads simultaneously or
 
 ---
 
-## #38 The require Function
+## Section 4: Node.js Fundamentals: Module System
+
+### #38 The require Function
 
 **Use require to reuse a Module**  
-We can breakdown and organize our code into smaller more manageable files - the modules.
+We can breakdown and organize our code into smaller more manageable files - the modules.  
 We can reuse the modules as per the requirements.
 
-Node has a built-in function called `require()` which is not part of the JavaScript.
-`require()` takes a JavaScript file, executes it and then returns the code from that file
+Node has a built-in function called `require()` which is not part of the JavaScript.  
+`require()` takes a JavaScript file, executes it and then returns the code from that file  
 so that we can reuse it elsewhere.
 
-We can require any of the built-in modules, like
-`require('http')`
-`require('events')`
+We can require any of the built-in modules, like  
+`require('http')`  
+`require('events')`  
 by passing in the name of the module as a string.
 
 ![Node.js Modules](./images/node-modules.png "Node.js Modules")
 
 ---
 
-## #39 Making HTTP Requests
+### #39 Making HTTP Requests
 
 **Refer**  
 
@@ -1484,7 +1486,7 @@ by passing in the name of the module as a string.
 - [Node.js | HTTPS](https://nodejs.org/dist/latest-v18.x/docs/api/https.html)
 
 **Code Examples**  
-Check "14-http-app" application.
+Check "apps/14-http-app" application.
 
 ---
 
