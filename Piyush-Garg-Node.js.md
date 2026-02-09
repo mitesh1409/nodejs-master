@@ -235,11 +235,44 @@ How Node.js is different from other multi-threading languages (C, C++, Java, Go 
 
 ---
 
-## REST APIs
+## #7 Building HTTP Server in Node.js
 
-What is REST API?
-https://www.youtube.com/watch?v=cJAyEOZQUQY&list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo&index=12
+---
 
+## #8 Handling URL's in Node.js
+
+URL Components  
+
+* Protocol
+* Domain
+* Path
+* Query Parameters
+
+---
+
+## #9 HTTP Methods
+
+GET
+POST
+PUT
+PATCH
+DELETE
+
+---
+
+## #10 Getting started with ExpressJS and Node.js
+
+---
+
+## #11 How versioning works in Node.js?
+
+Semantic Versioning
+
+MAJOR.MINOR.PATCH
+
+---
+
+## #12 REST APIs
 
 REST API = RESTful API
 
@@ -249,7 +282,7 @@ The primary purpose of a RESTful API is to allow clients (like a web browser or 
 
 Key Principles of REST  
 
-1. Client-Server Architecture
+**Client-Server Architecture**
 
 Client and Server should work independently, they should not depend on each other.
 
@@ -262,7 +295,7 @@ In case we are developing a blog application where our client can be a Browser o
 then server must send data in the JSON format, that can be then processed by client to display a blog.
 Here client (Browser, Mobile etc.) is not dependent on server for how to render blog.
 
-2. Respect HTTP methods/verbs.
+**Respect HTTP methods/verbs**
 
 REST API Endpoints for User resource.
 
@@ -279,6 +312,13 @@ PATCH /users/:id
 
 Delete
 DELETE /users/:id
+
+---
+
+## #13 Building REST APIs using Node.js and ExpressJS
+
+Generate mock data.
+mockaroo.com
 
 ---
 
