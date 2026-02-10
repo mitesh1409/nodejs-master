@@ -322,27 +322,47 @@ mockaroo.com
 
 ---
 
-## HTTP Headers
+## #14 Introduction to POSTMAN for REST APIs
+
+---
+
+## #15 Express Middleware
+
+There are 3 types of middlewares:
+
+* Built-in - provided by Express
+* Custom - built by developer for the app
+* 3rd party - provided by 3rd party packages that we install in our app
+
+---
+
+## #16 What are HTTP headers in API
 
 HTTP headers are an important part of the API request and response  
 as they represent the meta-data associated with the API request and response.
 
 HTTP headers carry information for the request and response.
 
-It is a good practice to prefix custom headers with "X-".
-For example,
-X-Some-Header-A
-X-Some-Header-B
+Custom headers are prefixed with "X".  
+For example, "X-Powered-By", "X-Custom-Header-Name".  
 
 ---
 
-## HTTP Response Status Codes
+## #17 HTTP Response Status Codes
 
-https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status
+[https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status](HTTP response status codes)
+
+HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes:
+
+* Informational responses (100 – 199)
+* Successful responses (200 – 299)
+* Redirection messages (300 – 399)
+* Client error responses (400 – 499)
+* Server error responses (500 – 599)
 
 ---
 
-## MongoDB
+## #18 Getting started with MongoDB
 
 `show dbs`
 Show databases.
@@ -358,11 +378,27 @@ Show collections in the database.
 
 ---
 
+## #19 Connecting Node.js with MongoDB | Mongoose + ExpressJS
+
+---
+
+## #20 Model View Controller in NodeJS | MVC Pattern
+
+```javascript
+
+// What is this used for??
+mongoose.set("strictQuery", true);
+
+```
+
+---
+
 ## Server Side Rendering
 
 SSR = Views are rendered on server side and then sent to the client.
 
 For SSR we have different template engines available like:  
+
 - [EJS](https://ejs.co/)
 - [pug](https://pugjs.org/api/getting-started.html)
 - [Handlebars](https://handlebarsjs.com/)
