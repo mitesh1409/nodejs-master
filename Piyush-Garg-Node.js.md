@@ -320,6 +320,32 @@ DELETE /users/:id
 Generate mock data.
 mockaroo.com
 
+Hybrid Server = CSR + SSR
+
+Client Side Rendering
+Server returns just the required data to the client.
+It is client's responsibility to render the page/view with the data received from the server.
+For this we can have a REST API.
+
+Server Side Rendering
+Server returns page/view rendered with the required data.
+Client depends on server for how to render the page/view.
+For this we can have a route to display a page/view.
+
+---
+
+## #14 Introduction to POSTMAN for REST APIs
+
+---
+
+## #15 Express Middleware
+
+Types of middlewares:  
+
+* Built-in middlewares
+* Custom middlewares
+* 3rd party middlewares
+
 ---
 
 ## HTTP Headers
