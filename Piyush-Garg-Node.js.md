@@ -538,36 +538,17 @@ Since server maintains state/data, this is called Stateful Authentication.
 
 ---
 
-
-
-
----
-
-Explore -> Session vs. Cookie
-
-Doubt/query/question
-
-While implementing stateful authentication,
-what if we store sessions (session id + user data) inside database.
-It should not be a problem then?
-
-Problems with this approach are:  
-
-- For each request we need to fetch data from the database, latency is increased per request.
-- Also number of read operations on the database are increased, because we need to fetch data  
-  from the database for each incoming request where authentication is required, which increases  
-  the cost of server operations.
-- Session hijacking is easier, we just need a session ID from cookie.
-
-
-**Latency**  
-In software engineering, latency is the time delay between a data request being sent and the response being received, often measured in milliseconds. It measures the total "round trip" time for a data packet to travel from its source to its destination and back, encompassing factors like network congestion, distance, hardware limitations, and processing time. Minimizing latency is crucial for good performance, as high latency leads to lag and a poor user experience.
-
----
-
-## Cookies
+## #25 What are Cookies in Node.js?
 
 Cookies are domain specific.
+Browser keeps track of all the cookies domain wise and while sending request to a server  
+it will send cookies that belongs to that server domain only.
+
+For example, user visited Google and Facebook and accepted incoming cookies.  
+Now in his/her browser there are total 4 cookies - 2 for Google, 2 for Facebook.  
+When he requests Google again only 2 cookies of the Google will be sent to the Google server by the browser.  
+Same for the Facebook request.
+All of these is handled by browser, as a developer we don't need to worry about this.
 
 Only server can create cookies, client cannot.
 
@@ -587,6 +568,7 @@ There are two ways to send authorization token:
     Server gets back the token from cookie received in the request, validates it and allows access if all ok.
     Cookie saves and sends token automatically, we don't need to do anything.
     Only Server can create cookie, client cannot.
+    Cookies are domain specific.
     Cookies are available for browser/web platforms only.
 - JSON Response
     Server validates user credentials, if ok then generates an authorization token.
@@ -596,6 +578,38 @@ There are two ways to send authorization token:
     Authorization: Bearer <token>
     Server gets back the token from request header, validates it and allows access if all ok.
     Suitable for all platforms - browser/web, mobile etc.
+
+What is Bearer Authentication?
+This is also called Token Authentication.
+Check on swagger.io documentation.
+
+---
+
+## Explore -> Session vs. Cookie
+
+Doubt/query/question
+
+While implementing stateful authentication,  
+what if we store sessions (session id + user data) inside database.
+Is there any problem with this approach?
+
+Problems with this approach are:  
+
+- For each request we need to fetch data from the database, latency is increased per request.
+- Also number of read operations on the database are increased, because we need to fetch data  
+  from the database for each incoming request where authentication is required, which increases  
+  the cost of server operations.
+- Session hijacking is easier, we just need a session ID from cookie.
+
+
+**Latency**  
+In software engineering, latency is the time delay between a data request being sent and the response being received, often measured in milliseconds. It measures the total "round trip" time for a data packet to travel from its source to its destination and back, encompassing factors like network congestion, distance, hardware limitations, and processing time. Minimizing latency is crucial for good performance, as high latency leads to lag and a poor user experience.
+
+---
+
+## Cookies
+
+
 
 ---
 
