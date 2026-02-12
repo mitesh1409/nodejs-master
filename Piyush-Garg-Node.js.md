@@ -405,6 +405,12 @@ mongoose.set("strictQuery", true);
 
 ---
 
+## #21 Create a Custom URL Shortener using Node.JS and MongoDB
+
+---
+
+## #22 Server Side Rendering with EJS and Node.JS
+
 ## Server Side Rendering
 
 SSR = Views are rendered on server side and then sent to the client.
@@ -420,6 +426,7 @@ For SSR we have different template engines available like:
 ## #23 Building Node.js Authentication from Scratch
 
 There are two types of Authentication Patterns:  
+
 1. Stateful -> server maintains authentication state/data
 2. Stateless -> server does not maintain authentication state/data
 
