@@ -540,6 +540,8 @@ Since server maintains state/data, this is called Stateful Authentication.
 
 ## #25 What are Cookies in Node.js?
 
+**What are Cookies?**  
+
 Cookies are domain specific.
 Browser keeps track of all the cookies domain wise and while sending request to a server  
 it will send cookies that belongs to that server domain only.
@@ -552,16 +554,17 @@ All of these is handled by browser, as a developer we don't need to worry about 
 
 Only server can create cookies, client cannot.
 
-Authorization Header
+**Authorization Header**  
+
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Authorization
 https://swagger.io/docs/specification/v3_0/authentication/bearer-authentication/
 
-Format
-Authorization: Bearer <token>
+Format  
+Authorization: Bearer <authorization token>
 
 There are two ways to send authorization token:  
 
-- Using Cookies
+1. Using Cookies
     Server validates user credentials, if ok then generates an authorization token.
     Server sends this token to client using a cookie.
     Client then sends cookie back to server in subsequent requests.
@@ -570,7 +573,7 @@ There are two ways to send authorization token:
     Only Server can create cookie, client cannot.
     Cookies are domain specific.
     Cookies are available for browser/web platforms only.
-- JSON Response
+2. Using JSON Response
     Server validates user credentials, if ok then generates an authorization token.
     Server sends this token to client directly in the JSON response.
     Client needs to save this token on its side, so that it can then use it in subsequent requests.
@@ -579,11 +582,21 @@ There are two ways to send authorization token:
     Server gets back the token from request header, validates it and allows access if all ok.
     Suitable for all platforms - browser/web, mobile etc.
 
-What is Bearer Authentication?
-This is also called Token Authentication.
-Check on swagger.io documentation.
+**Reference**  
+[Swagger | Bearer Authentication](https://swagger.io/docs/specification/v3_0/authentication/bearer-authentication/)
 
 ---
+
+## #26 Authorization in Node.js
+
+Authentication Vs Authorization
+
+We can have two middlewares in place in the boilerplate of the Node.js app:  
+
+* authenticate - verifies user identity, sets user in the request
+* authorize - verifies user permissions
+
+___
 
 ## Explore -> Session vs. Cookie
 
