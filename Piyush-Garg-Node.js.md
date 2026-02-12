@@ -340,20 +340,6 @@ For this we can have a route to display a page/view.
 
 ## #15 Express Middleware
 
-Types of middlewares:  
-
-* Built-in middlewares
-* Custom middlewares
-* 3rd party middlewares
-
----
-
-## #14 Introduction to POSTMAN for REST APIs
-
----
-
-## #15 Express Middleware
-
 There are 3 types of middlewares:
 
 * Built-in - provided by Express
@@ -431,11 +417,13 @@ For SSR we have different template engines available like:
 
 ---
 
-## Authentication
+## #23 Building Node.js Authentication from Scratch
 
-There are two types of authentication:
+There are two types of Authentication Patterns:  
+1. Stateful -> server maintains authentication state/data
+2. Stateless -> server does not maintain authentication state/data
 
-### #1 Stateful
+### #1 Stateful Authentication
 
 Which maintains state or data on the server side.
 Session data is maintained on server side - persistent (in-memory) or non-persistent (database).
@@ -443,7 +431,11 @@ Session id is saved into cookie and this cookie is sent to the client.
 Client sends this session id via cookie in the subsequent requests.
 Server validates session id and processes requests accordingly.
 
-### #2 Stateless
+Server may send session id using Cookies, Response or Response Headers.
+In case of SSR implementation where client is Browser, Cookies are used.
+In case of CSR implementation (REST APIs) where client can be mobile/web etc., Response/Response Headers are used.
+
+### #2 Stateless Authentication
 
 No state or data maintained on the server side.
 
