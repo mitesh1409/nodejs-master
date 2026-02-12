@@ -33,7 +33,8 @@ Node.js REPL
 
 Install Node.js & NPM.
 
-There are two types of Node.js versions:
+There are two types of Node.js versions:  
+
 * LTS (even numbers)
 * Current/Non-LTS (odd numbers)
 
@@ -425,6 +426,8 @@ For SSR we have different template engines available like:
 
 ## #23 Building Node.js Authentication from Scratch
 
+## #24 JWT Authentication in Node.js
+
 There are two types of Authentication Patterns:  
 
 1. Stateful -> server maintains authentication state/data
@@ -432,77 +435,115 @@ There are two types of Authentication Patterns:
 
 ### #1 Stateful Authentication
 
-Which maintains state or data on the server side.
-Session data is maintained on server side - persistent (in-memory) or non-persistent (database).
-Session id is saved into cookie and this cookie is sent to the client.
-Client sends this session id via cookie in the subsequent requests.
-Server validates session id and processes requests accordingly.
+**High Level Implementation Pointers**  
 
-Server may send session id using Cookies, Response or Response Headers.
-In case of SSR implementation where client is Browser, Cookies are used.
-In case of CSR implementation (REST APIs) where client can be mobile/web etc., Response/Response Headers are used.
+* Server maintains authentication state/data using sessions.
+  Sessions can be short lived or long lived.
+  Based on its lifetime it can be saved into in-memory or database.
 
-### #2 Stateless Authentication
+* Server generates a cookie, saves session ID into it and then sends it to the client.
 
-No state or data maintained on the server side.
+* Client then sends this session ID to the server via cookie in the subsequent requests.
 
-Explore -> Session vs. Cookie
+* Server receives session ID from the cookie, validates it and processes requests accordingly.
 
-### Stateful Authentication - order of execution  
+* Server may send session ID using Cookies, Response or Response Headers.
+  In case of SSR implementation where client is Browser, Cookies are used.
+  In case of CSR implementation (REST APIs) where client can be mobile/web etc., Response or Response Headers are used.
 
-* Display login form.
+**Low Level Implementation Pointers**  
+
+* Display a login form.
 * User logs in by providing username/email and password.
 * Server checks/validates credentials.
   If invalid then returns a failure response with 401 "Unauthorized" status.
-  If all ok then it generates a session id/token and maps user data with it.
-  Server saves this session entry.
-  And then it sends session id/token in a cookie to the client.
-  Here server can send this session id/token using any one of the following ways:
+  If all ok then it generates a session ID and maps required user data with it.
+  Server saves this session entry (in-memory or database).
+  Server generates a cookie, saves session ID into it and then sends it to the client.
+  Here server can send this session ID using any one of the following ways:  
   * cookies (Web applications where the client is browser)
   * response body (Mobile applications where the client is a native application)
   * response headers (Mobile applications where the client is a native application)
 * For the subsequent client requests where user authentication is required,
-  client sends session id via cookie to the server,
-  server gets session id/token from the cookie sent by client.
-  Server then validates this session id and gets the user data from this session id/token.
-  If either session id or user is not found then it redirects user to login.
+  client sends session ID via cookie to the server,  
+  server gets session ID from the cookie sent by client.  
+  Server then validates this session ID and gets the user data from this session ID.
+  If either session ID or user is not found then it redirects user to login.
 
-So here server saves all the user data/state and maps it with a session id/token,
-client only saves session id/token.
-So state/data is maintained by the server.
-This is stateful authentication.
+So here server saves all the user data/state and maps it with a session ID,  
+client only saves session ID.  
+Since server maintains state/data, this is called Stateful Authentication.
 
-Stateful Authentication key points:  
+**Key Pointers**  
 
-- Server maintains the state.
-- Server requires more memory to maintain this state. Memory intensive.
-- This state can be stored inside server memory (non-persistent) or a database (persistent).
-  * If the state is stored in server memory then it is non-persistent,  
+* Server maintains the state.
+* Server requires more memory to maintain this state. So it is memory intensive.
+* This state can be stored inside server's memory (non-persistent) or a database (persistent).
+  * If the state is stored in server's memory then it is non-persistent,  
     meaning it will be lost when the server is restarted.
   * If the state is stored in the database then it is persistent,  
     meaning it is there even if the server is restarted.
-- Sessions are short lived.
-- Server has full controll over this state.
-- Banking websites generally use sessions for security reasons.
+* Sessions are generally short lived (short lifespan).
+* Server has full controll over this state.
+* Banking websites generally use sessions for security reasons.
 
-### Stateless Authentication - order of execution
+### #2 Stateless Authentication
 
-- Server generates a token in a way that -
-  - it contains all the required data/state
-  - encrypts it using a signature, tokens are signed
-  - client can read the token but cannot modify it without a valid signature (only server has this signature)
-- Server can send this token to the client using any one of the following ways:
-  - cookie (for web applications)
-  - directly in the response (for native apps)
-- We implement using [JWT](https://www.jwt.io/)
-- Tokens are long lived.
-- A Token can be stolen to hijack user account.
-- Server has limited control.
+**High Level Implementation Pointers**  
 
-For Serverless Architecture  
+* Server does not maintain any authentication state/data.
+
+* Server generates a signed token (JWT), and then sends it to the client.
+  This token contains all the required data set by server.
+
+* Client can read the token but cannot modify it without a valid signature.
+  Only server has this signature.
+
+* Client then sends this token to the server via request headers in the subsequent requests.
+
+* Server receives token from the request headers, validates it and processes requests accordingly.
+
+* Server can send this token to the client using any one of the following ways:
+  * cookie (for web applications)
+  * directly in the response (for native apps)
+
+**Low Level Implementation Pointers**  
+
+* Server generates a token in a way that -
+  * it contains all the required data/state
+  * encrypts it using a signature, tokens are signed
+  * client can read the token but cannot modify it without a valid signature (only server has this signature)
+* Server can send this token to the client using any one of the following ways:
+  * cookie (for web applications)
+  * directly in the response (for native apps)
+* We implement using [JWT](https://www.jwt.io/)
+* Tokens are long lived.
+* A Token can be stolen to hijack user account.
+* Server has limited control.
+
+**Key Pointers**  
+
+* Server does not maintain any state.
+* Server depends on 3rd party library to generate and validate tokens.
+  Computation is required to generate and validate tokens.
+* Tokens are long lived (long lifespan).
+* Server has limited controll over this token.
+* Generally used in systems where we have native clients with REST APIs in the backend.
+* Used in Serverless Architecture.
+
+**Serverless Architecture**  
 
 - sessions or stateful authentication is not possible
 - tokens or stateless authentication is used
+
+---
+
+
+
+
+---
+
+Explore -> Session vs. Cookie
 
 Doubt/query/question
 
@@ -513,14 +554,14 @@ It should not be a problem then?
 Problems with this approach are:  
 
 - For each request we need to fetch data from the database, latency is increased per request.
-- Also number of read operations on the database are increased, because we need to fetch data from the database for each incoming request where authentication is required, which increases the cost of server operations.
-- Session hijacking is easier, we just need a session id from cookie.
+- Also number of read operations on the database are increased, because we need to fetch data  
+  from the database for each incoming request where authentication is required, which increases  
+  the cost of server operations.
+- Session hijacking is easier, we just need a session ID from cookie.
 
 
-**latency**
+**Latency**  
 In software engineering, latency is the time delay between a data request being sent and the response being received, often measured in milliseconds. It measures the total "round trip" time for a data packet to travel from its source to its destination and back, encompassing factors like network congestion, distance, hardware limitations, and processing time. Minimizing latency is crucial for good performance, as high latency leads to lag and a poor user experience.
-
-
 
 ---
 
