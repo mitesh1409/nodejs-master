@@ -596,7 +596,16 @@ We can have two middlewares in place in the boilerplate of the Node.js app:
 * authenticate - verifies user identity, sets user in the request
 * authorize - verifies user permissions
 
-___
+---
+
+## #27 Creating Discord Bot in Node.js
+
+---
+
+## #28 Uploading Files with Node.js and Multer
+
+---
+
 
 ## Explore -> Session vs. Cookie
 
