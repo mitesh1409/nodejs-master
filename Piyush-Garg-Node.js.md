@@ -606,6 +606,153 @@ We can have two middlewares in place in the boilerplate of the Node.js app:
 
 ---
 
+## #29 Setting Up Project - Node.js Blogging Application with MongoDB
+
+Blogging Application Todos
+
+#1
+Setup project - complete boilerplate code
+  * Install express, mongoose, handlebars, dotenv, multer, jsonwebtoken, jest etc.
+  * Install nodemon or use built-in feature to restart app on every file change.
+  * MongoDB connection code.
+  * Global error handler.
+  * Global middlewares to parse form data, to parse JSON requests, log incoming requests, middleware to serve static files etc.
+  * Centralized configuration.
+  * Setup required scripts - dev, prod etc.
+  * Create Github repo.
+
+
+#2
+Setup for SSR
+  * Install handlebars
+  * Install Bootstrap
+  * Create master layout
+  * Navbar with Home, About, Contact, Sign In, Sign Up etc. links.
+  * Create static pages - Home, About, Contact, Sign In, Sign Up etc.
+
+```javascript
+
+const path = require("path");
+
+...
+
+app.set("view engine", "handlebars");
+app.set("views", path.resolve("./views"));
+
+```
+
+
+#3
+Complete user sign up feature.
+
+Create user schema - firstName, lastName, email, password, salt (to hash password), createdAt, updatedAt, profileImage, role (enum = USER, BLOGGER, ADMIN)
+
+Hash password using "crypto" built-in module of Node.js.
+
+```javascript
+
+// Here we used regular callback function instead of an arrow function,
+// so that we get correct "this", in regular function "this" points to the current user.
+userSchema.pre("save", function (next) {
+  // hash password before saving user
+
+  const user = this;
+
+  // Password not modified, keep it as it is.
+  if (!user.isModified("password")) {
+    return;
+  }
+
+  // Password is modified, so we will hash it.
+  const salt = randomBytes(16).toString();
+  const hashedPassword = createHmac('sha256', salt)
+    .update(user.password)
+    .digest('hex');
+
+  this.salt = salt;
+  this.password = hashedPassword;
+
+  next();
+});
+
+```
+
+Add code for error handling on front-end and back-end.
+
+Explore - hashing password using bcrypt vs crypto method, what is the difference?
+
+
+#4
+Complete user sign in feature.
+
+Explore - Mongoose Virtuals
+
+NOTE: Take care of async-await code.
+
+```javascript
+
+// Add this code in the user schema file.
+userSchema.static('matchLoginCredentials', function(email, password) {
+  const user = this.findOne({email: email});
+
+  if (!user) {
+    throw new Error('Failed to login. Either username or password incorrect.');
+  }
+
+  const salt = user.salt;
+  const currentHashedPassword = user.password;
+
+  const inputHashedPassword = createHmac('sha256', salt)
+    .update(password)
+    .digest('hex');
+
+  if (inputHashedPassword !== currentHashedPassword) {
+    throw new Error('Failed to login. Either username or password incorrect.');
+  }
+
+  return {
+    ...user,
+    password: undefined,
+    salt: undefined
+  };
+});
+
+// Add this code in the login controller.
+const {email, password} = req.body;
+const user = User.matchLoginCredentials(email, password);
+
+```
+
+Add code for user authentication.
+Generate authentication token using JWT upon successful login.
+
+Add code for error handling on front-end and back-end.
+
+
+#5
+Show Dashboard page after user logs in successfully.
+Show "Add Blog" button.
+Show "Sign Out" link.
+
+
+#6
+Complete user sign out feature.
+
+
+#7
+Add blog feature.
+
+Create blog schema - title, body, coverImage, createdBy, createdAt, updatedAt, publishedAt 
+
+Page to display a form to create a blog.
+Route to create a blog when this form is submitted.
+
+
+#8
+Display all the blogs on the Home page (latest first OR sorted by createdAt/publishedAt).
+
+---
+
 
 ## Explore -> Session vs. Cookie
 
