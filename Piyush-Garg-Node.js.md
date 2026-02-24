@@ -608,6 +608,10 @@ We can have two middlewares in place in the boilerplate of the Node.js app:
 
 ## #29 Setting Up Project - Node.js Blogging Application with MongoDB
 
+## #30 Setting Up Authentication - Node.js Blogging Application with MongoDB
+
+## #30 Complete Blog App - Node.js Blogging Application with MongoDB
+
 Blogging Application Todos
 
 #1
@@ -749,7 +753,65 @@ Route to create a blog when this form is submitted.
 
 
 #8
+Feature - Blog listing.
 Display all the blogs on the Home page (latest first OR sorted by createdAt/publishedAt).
+
+
+#9
+Feature - Blog details page.
+Show title, cover image, description & created by info.
+Update links in the blog listing page.
+Use `<pre>` tag to display description.
+
+
+#10
+Commenting feature.
+Only logged in users can comment on a blog.
+
+Create comment schema - content, createdBy, blogId, createdBy, updatedBy
+
+Form to submit/post a comment. Only show this if user is logged in.
+Otherwise show "Login to post your comments."
+Create comment route - create a comment once form is submitted to post a comment.
+
+
+#11
+Feature - show comments for each blog.
+This is visible to all users (even if user is not logged in).
+
+
+---
+
+## #31 Deploy NodeJS Application on AWS - Amazon Web Services | NodeJS
+
+Following changes are required before deploying on AWS:  
+
+#1 Get PORT value from environment file.
+We can't use fixed/hard coded PORT value, we need to get this from environment file.
+
+```javascript
+
+// Get PORT value from environment file, if not available then use 8000 as default value.
+const PORT = process.env.PORT || 8000;
+
+```
+
+Use "dotenv" package to write & read environment variables.
+
+#2 Get MongoDB connection URL from environment file.
+
+```javascript
+
+const MONGODB_CONNECTION_URL = process.env.MONGODB_CONNECTION_URL || 'default connection URL';
+
+```
+
+#3 Make sure you have "start" script set in your package.json file. Cloud providers automatically run this script to start our project/application.
+
+#4 While deploying on AWS, we need to name entry point/main file as "app.js".
+
+#5
+Amazon Elastic Beanstalk
 
 ---
 
