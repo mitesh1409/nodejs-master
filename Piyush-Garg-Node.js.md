@@ -811,7 +811,19 @@ const MONGODB_CONNECTION_URL = process.env.MONGODB_CONNECTION_URL || 'default co
 #4 While deploying on AWS, we need to name entry point/main file as "app.js".
 
 #5
-Amazon Elastic Beanstalk
+Deploy application on Amazon Elastic Beanstalk.
+
+#6
+Setup cloud MongoDB database and connect it with our application.
+
+Set environment variables on AWS Elastic Beanstalk for MONGODB_CONNECTION_URL.
+
+Go to AWS Elastic Beanstalk -> Configuration -> Software -> Edit -> Add environment variable. Once it is set, AWS will redeploy the application.
+
+#7
+Test application deployed on AWS.
+Do sign up, sign in, create blog, comment on blog etc. to make sure everything is working fine.
+Check database to make sure data is getting saved in the database.
 
 ---
 
