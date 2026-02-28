@@ -610,7 +610,7 @@ We can have two middlewares in place in the boilerplate of the Node.js app:
 
 ## #30 Setting Up Authentication - Node.js Blogging Application with MongoDB
 
-## #30 Complete Blog App - Node.js Blogging Application with MongoDB
+## #31 Complete Blog App - Node.js Blogging Application with MongoDB
 
 Blogging Application Todos
 
@@ -782,7 +782,7 @@ This is visible to all users (even if user is not logged in).
 
 ---
 
-## #31 Deploy NodeJS Application on AWS - Amazon Web Services | NodeJS
+## #32 Deploy NodeJS Application on AWS - Amazon Web Services | NodeJS
 
 Following changes are required before deploying on AWS:  
 
@@ -827,6 +827,150 @@ Check database to make sure data is getting saved in the database.
 
 ---
 
+## #33 WebSocket in NodeJS | Socket.IO - Real Time Messaging
+
+Client-Server communication is generally request-response based, meaning client sends a request to the server and then server sends a response back to the client.
+And then connection is closed, this is how HTTP works.
+In this communication pattern, server cannot send any data to the client until it receives a request from the client.
+
+Realtime communication is different, in this communication pattern server can send data to the client without waiting for a request from the client.
+For example, in a chat application, when a user sends a message to another user, server can send this message to the recipient user without waiting for any request from the recipient user.
+
+Polling is one way to implement realtime communication, in this approach client sends a request to the server at regular intervals (e.g., every 5 seconds) to check if there is any new data available. If there is new data, server sends it back in the response. This approach is simple but it can be inefficient as it generates a lot of unnecessary requests when there is no new data.
+Polling is not scalable, as the number of clients increases, the number of requests to the server also increases, which can lead to performance issues.
+
+Ways to implement realtime communication:
+
+1. WebSocket
+2. Server-Sent Events (SSE)
+
+Reference:  
+
+* [MDN | HTTP "Upgrade" Header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Upgrade)
+* [socket.io](https://socket.io/)
+
+---
+
+## #34 Streams in Node.js
+
+Explore the below package to monitor the performance of our Node.js application:  
+
+[express-status-monitor](https://www.npmjs.com/package/express-status-monitor)
+
+Reading a small file without streams is ok.
+
+But when we are reading a big file (e.g., 10GB) without streams, then it can lead to performance issues and even crash the server, because it tries to read the entire file into memory at once.
+
+To read big files efficiently, we can use streams. Streams allow us to read data in chunks, which is more memory efficient and can handle large files without crashing the server.
+
+Response can also be sent in chunks using streams, this is called "chunked transfer encoding".  
+Following header is used to indicate that the response is sent in chunks:  
+Transfer-Encoding: chunked  
+
+[Transfer-Encoding header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Transfer-Encoding)
+
+[Node.js Streams](https://nodejs.org/api/stream.html)
+
+---
+
+## #35 How to scale NodeJs applications using the cluster module.
+
+**Problem**  
+
+Problem with single instance of Node.js application is that it runs on a single thread, so it cannot utilize the full power of the server (CPU cores).
+
+Also over the time, as the number of users increases, the load on the server also increases, which can lead to performance issues and even crash the server.
+
+**Solution**  
+
+To scale Node.js applications, we can use the cluster module. The cluster module allows us to create multiple instances of our Node.js application, which can run on different CPU cores. This way we can utilize the full power of the server and handle more load without performance issues.
+
+[Node.js Cluster](https://nodejs.org/api/cluster.html)
+
+```javascript
+
+import os from 'os';
+import { availableParallelism } from 'node:os';
+
+const numCPUs = os.cpus().length;
+// OR
+const numCPUs = availableParallelism();
+
+```
+
+---
+
+## #36 What is NGINX?
+
+NGINX is a powerful web server and uses a  
+non-threaded, event-driven architecture to handle multiple connections efficiently.
+
+NGINX can also do other important things like -  
+
+* Load Balancing
+* HTTP Caching
+* Reverse Proxying
+
+**Forward Proxy**  
+
+Multiple clients -> Forward Proxy -> Server
+
+Multiple clients send requests to the Forward Proxy, which then forwards these requests to the Server. The Server processes the requests and sends responses back to the Forward Proxy, which then relays these responses back to the respective clients.
+
+For a server there is only one client which is the Forward Proxy, it does not know about the multiple clients behind the Forward Proxy.
+
+Example:  
+Forward Proxy is used for anonymity, security, content filtering etc.
+For example, in a corporate network, employees' devices (clients) send requests to the Forward Proxy (VPN Server), which then forwards these requests to the internet (Server). The Forward Proxy can filter out malicious content, enforce security policies, and provide anonymity for the employees.
+
+**Reverse Proxy**  
+
+Client -> Reverse Proxy -> Multiple Servers
+
+In this setup, the Client sends requests to the Reverse Proxy, which then forwards these requests to one of the Multiple Servers based on load balancing or other criteria. The chosen Server processes the request and sends the response back to the Reverse Proxy, which then relays it back to the Client.
+
+For a client there is only one server which is the Reverse Proxy, it does not know about the multiple servers behind the Reverse Proxy.
+
+Example:  
+Reverse Proxy is used for load balancing, security, caching etc.
+For example, in a web application, the Reverse Proxy (NGINX) receives incoming requests from clients and forwards them to one of the Multiple Servers (Node.js application instances) based on load balancing algorithms. The Reverse Proxy can also provide security features like SSL termination, caching of responses, and protection against DDoS attacks.
+
+**NGINX**  
+
+* Can handle 10K concurrent requests.
+* Cache HTTP requests and responses.
+* Act as a Reverse Proxy to distribute incoming requests to multiple servers, which helps in load balancing and improving performance.
+* Act as a Load Balancer to distribute incoming traffic across multiple servers, ensuring that no single server is overwhelmed and improving the overall performance and reliability of the application.
+* Act as an API Gateway.
+* Serve and cache static files like images, videos etc., which can improve the performance of web applications by reducing the load on the application servers and delivering static content more efficiently.
+* Handle SSL certificates.
+
+---
+
+## #37 Install and Setup Nginx
+
+Setup NGINX using Docker.
+
+Setup an Ubuntu container using Docker and then install NGINX inside it.
+
+`docker ps`
+
+`docker run -it -p 8080:80 ubuntu`
+
+Verify NGINX is working by going to http://localhost:8080 in the browser.  
+OR by typing `curl http://localhost:8080` in the terminal  
+OR by typing `nginx -v` in the terminal of the container to check NGINX version.  
+
+We can also check response headers to verify that NGINX is working.  
+Following response header indicates that the application is hosted by NGINX:  
+Server: nginx/1.25.3 (Ubuntu)
+
+Execute the below command in the terminal of the container to check NGINX files and folders:
+`ls /etc/nginx`
+
+Here nginx.conf is the main configuration file of NGINX, where we can write all the configuration for NGINX.
+
+---
 
 ## Explore -> Session vs. Cookie
 
