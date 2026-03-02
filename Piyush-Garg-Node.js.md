@@ -972,6 +972,174 @@ Here nginx.conf is the main configuration file of NGINX, where we can write all 
 
 ---
 
+## #38 Serve Static Content with Nginx
+
+/etc/nginx/nginx.conf
+This is the main configuration file of NGINX, where we can write all the configuration for NGINX.
+
+/etc/nginx/mime.types
+This file contains the mapping of file extensions to MIME types. It is used by NGINX to determine the content type of the files it serves. When a client requests a file, NGINX uses the file extension to look up the corresponding MIME type in this file and includes it in the response headers. This helps the client understand how to handle the received file (e.g., display it in the browser, download it, etc.).
+We can also add custom MIME types in this file if needed.  
+We can include this file in the nginx.conf file using the following line:
+`include /etc/nginx/mime.types;`
+that way we can use the MIME types defined in this file in our NGINX configuration.
+
+`nginx -s reload`  
+This command is used to reload the NGINX configuration without restarting the server. It allows you to apply changes made to the NGINX configuration file (nginx.conf) without interrupting the current connections. When you run this command, NGINX will gracefully reload the configuration, allowing existing connections to continue while applying the new configuration for any new incoming requests.
+
+`nginx -t`
+This command is used to test the NGINX configuration for syntax errors. It checks the nginx.conf file for any syntax issues and reports them without actually starting or reloading the NGINX server. This is a useful command to ensure that your configuration changes are valid before applying them with `nginx -s reload`.
+
+---
+
+## #39 Full Node.js Deployment - NGINX, SSL With Lets Encrypt
+
+[Node.js Deployment](https://gist.github.com/piyushgarg-dev/8b14c87c8ff4d626ecbc747b6b9fc57f)
+
+#1  
+Create an AWS account.
+
+#2  
+Create an EC2 instance, SSH into it.
+
+#3  
+Install Node.js, NPM, PM2.
+
+```bash
+sudo apt-get update
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo npm install -g pm2
+```
+
+[Download Node.js](https://nodejs.org/en/download)
+
+#4  
+Clone your Node.js application from Github to the EC2 instance.
+Then install dependencies using `npm install` command.
+
+#5  
+Go to project directory and start the application using PM2.
+
+```bash
+cd your-project-directory
+pm2 start app.js --name "your-app-name"
+```
+
+Other pm2 commands  
+pm2 show app
+pm2 status
+pm2 restart app
+pm2 stop app
+pm2 logs (Show log stream)
+pm2 flush (Clear logs)
+
+To make sure app starts when reboot  
+pm2 startup ubuntu
+
+#6  
+Set MongoDB connection URL in the environment variables on the EC2 instance.
+
+```bash
+export MONGODB_CONNECTION_URL='your-mongodb-connection-url'
+```
+
+And then restart the application using PM2 to apply this environment variable.
+
+```bash
+pm2 restart your-app-name
+```
+
+#7  
+Check logs using `pm2 logs -all` command to make sure everything is working fine.
+
+#8  
+Edit Security Group of the EC2 instance to allow incoming traffic on port 80 (HTTP) and port 443 (HTTPS).
+Add two new rules (one for IPv4 and one for IPv6) with type Custom TCP for port 8001 (application port) to allow incoming traffic on this port as well.
+
+#9  
+Get a free domain name from Freenom and point it to the public IP address of your EC2 instance.
+
+Verify that your application is accessible using this domain name using the following command in the terminal:
+
+```bash
+curl http://your-domain-name:<port>
+
+# OR
+
+nslookup your-domain-name:<port>
+```
+
+#10  
+Setup firewall.
+
+```bash
+sudo ufw enable
+sudo ufw status
+sudo ufw allow ssh # (Port 22)
+sudo ufw allow http # (Port 80)
+sudo ufw allow https # (Port 443)
+```
+
+#11  
+Install NGINX and configure it to serve your Node.js application.
+
+```bash
+sudo apt-get install nginx
+```
+
+#12  
+sudo certbot --nginx -d piyushgarg-dev.ml -d www.piyushgarg-dev.ml
+
+It will generate SSL certificate.
+
+Verify this by visiting the application in your browser.
+
+certbot renew --dry-run
+
+#13
+At the end once application is verified, clean-up AWS account services which are in use.
+Terminate EC2 instance.
+Release Elastic IP address.
+
+---
+
+## #40 Serverless Framework with NodeJS
+
+## #41 What is Serverless? | Serverless Vs Monolith | AWS Lambda
+
+What is Serverless?
+
+Non-serverless  
+We have to manage the server from our end.  
+Server instance is always running regardless of the incoming traffick.  
+Fixed charges based on server instance.
+
+Serverless  
+You don't need to worry about managing server for your application/code.  
+Amazon takes care of everything.  
+Charged per invocation.  
+It autoscales as per the incoming traffick/requests.  
+AWS Lambda Service
+
+Cons  
+Cold start  
+Slow compared to non-serverless architecture  
+Stateless  
+In case of APIs, each API will have its own AWS Lambda function  
+
+[serverless.com](https://www.serverless.com/)
+
+[The Amazon Prime Video Monolith Shift: Dissecting Microservices, Serverless, and the Real-World Cost](https://medium.com/@abhishekranjandev/the-amazon-prime-video-monolith-shift-dissecting-microservices-serverless-and-the-real-world-ec18e429ad6f)
+
+---
+
+eraser.io
+
+excalidraw.com
+
+---
+
 ## Explore -> Session vs. Cookie
 
 Doubt/query/question
