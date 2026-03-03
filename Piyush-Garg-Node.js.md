@@ -1134,6 +1134,27 @@ In case of APIs, each API will have its own AWS Lambda function
 
 ---
 
+## #42 GraphQL Crash Course - GraphQL NodeJS
+
+
+What is GraphQL?
+
+What problem does GraphQL solve?  
+
+REST API
+
+Problem with REST API is - we end up fetching more data than it is actually required.
+
+Multiple clients may need different set of data, and if we are serving those requests with a single API with generic response then we have this problem.
+
+For example,
+
+For our REST APIs Server, we have a following API which returns todos data:  
+GET /todos - returns all the todos
+GET /todos/<id> - returns a todo with an "id"
+
+---
+
 eraser.io
 
 excalidraw.com
