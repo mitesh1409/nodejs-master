@@ -610,7 +610,7 @@ We can have two middlewares in place in the boilerplate of the Node.js app:
 
 ## #30 Setting Up Authentication - Node.js Blogging Application with MongoDB
 
-## #30 Complete Blog App - Node.js Blogging Application with MongoDB
+## #31 Complete Blog App - Node.js Blogging Application with MongoDB
 
 Blogging Application Todos
 
@@ -782,7 +782,7 @@ This is visible to all users (even if user is not logged in).
 
 ---
 
-## #31 Deploy NodeJS Application on AWS - Amazon Web Services | NodeJS
+## #32 Deploy NodeJS Application on AWS - Amazon Web Services | NodeJS
 
 Following changes are required before deploying on AWS:  
 
@@ -811,10 +811,355 @@ const MONGODB_CONNECTION_URL = process.env.MONGODB_CONNECTION_URL || 'default co
 #4 While deploying on AWS, we need to name entry point/main file as "app.js".
 
 #5
-Amazon Elastic Beanstalk
+Deploy application on Amazon Elastic Beanstalk.
+
+#6
+Setup cloud MongoDB database and connect it with our application.
+
+Set environment variables on AWS Elastic Beanstalk for MONGODB_CONNECTION_URL.
+
+Go to AWS Elastic Beanstalk -> Configuration -> Software -> Edit -> Add environment variable. Once it is set, AWS will redeploy the application.
+
+#7
+Test application deployed on AWS.
+Do sign up, sign in, create blog, comment on blog etc. to make sure everything is working fine.
+Check database to make sure data is getting saved in the database.
 
 ---
 
+## #33 WebSocket in NodeJS | Socket.IO - Real Time Messaging
+
+Client-Server communication is generally request-response based, meaning client sends a request to the server and then server sends a response back to the client.
+And then connection is closed, this is how HTTP works.
+In this communication pattern, server cannot send any data to the client until it receives a request from the client.
+
+Realtime communication is different, in this communication pattern server can send data to the client without waiting for a request from the client.
+For example, in a chat application, when a user sends a message to another user, server can send this message to the recipient user without waiting for any request from the recipient user.
+
+Polling is one way to implement realtime communication, in this approach client sends a request to the server at regular intervals (e.g., every 5 seconds) to check if there is any new data available. If there is new data, server sends it back in the response. This approach is simple but it can be inefficient as it generates a lot of unnecessary requests when there is no new data.
+Polling is not scalable, as the number of clients increases, the number of requests to the server also increases, which can lead to performance issues.
+
+Ways to implement realtime communication:
+
+1. WebSocket
+2. Server-Sent Events (SSE)
+
+Reference:  
+
+* [MDN | HTTP "Upgrade" Header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Upgrade)
+* [socket.io](https://socket.io/)
+
+---
+
+## #34 Streams in Node.js
+
+Explore the below package to monitor the performance of our Node.js application:  
+
+[express-status-monitor](https://www.npmjs.com/package/express-status-monitor)
+
+Reading a small file without streams is ok.
+
+But when we are reading a big file (e.g., 10GB) without streams, then it can lead to performance issues and even crash the server, because it tries to read the entire file into memory at once.
+
+To read big files efficiently, we can use streams. Streams allow us to read data in chunks, which is more memory efficient and can handle large files without crashing the server.
+
+Response can also be sent in chunks using streams, this is called "chunked transfer encoding".  
+Following header is used to indicate that the response is sent in chunks:  
+Transfer-Encoding: chunked  
+
+[Transfer-Encoding header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Transfer-Encoding)
+
+[Node.js Streams](https://nodejs.org/api/stream.html)
+
+---
+
+## #35 How to scale NodeJs applications using the cluster module.
+
+**Problem**  
+
+Problem with single instance of Node.js application is that it runs on a single thread, so it cannot utilize the full power of the server (CPU cores).
+
+Also over the time, as the number of users increases, the load on the server also increases, which can lead to performance issues and even crash the server.
+
+**Solution**  
+
+To scale Node.js applications, we can use the cluster module. The cluster module allows us to create multiple instances of our Node.js application, which can run on different CPU cores. This way we can utilize the full power of the server and handle more load without performance issues.
+
+[Node.js Cluster](https://nodejs.org/api/cluster.html)
+
+```javascript
+
+import os from 'os';
+import { availableParallelism } from 'node:os';
+
+const numCPUs = os.cpus().length;
+// OR
+const numCPUs = availableParallelism();
+
+```
+
+---
+
+## #36 What is NGINX?
+
+NGINX is a powerful web server and uses a  
+non-threaded, event-driven architecture to handle multiple connections efficiently.
+
+NGINX can also do other important things like -  
+
+* Load Balancing
+* HTTP Caching
+* Reverse Proxying
+
+**Forward Proxy**  
+
+Multiple clients -> Forward Proxy -> Server
+
+Multiple clients send requests to the Forward Proxy, which then forwards these requests to the Server. The Server processes the requests and sends responses back to the Forward Proxy, which then relays these responses back to the respective clients.
+
+For a server there is only one client which is the Forward Proxy, it does not know about the multiple clients behind the Forward Proxy.
+
+Example:  
+Forward Proxy is used for anonymity, security, content filtering etc.
+For example, in a corporate network, employees' devices (clients) send requests to the Forward Proxy (VPN Server), which then forwards these requests to the internet (Server). The Forward Proxy can filter out malicious content, enforce security policies, and provide anonymity for the employees.
+
+**Reverse Proxy**  
+
+Client -> Reverse Proxy -> Multiple Servers
+
+In this setup, the Client sends requests to the Reverse Proxy, which then forwards these requests to one of the Multiple Servers based on load balancing or other criteria. The chosen Server processes the request and sends the response back to the Reverse Proxy, which then relays it back to the Client.
+
+For a client there is only one server which is the Reverse Proxy, it does not know about the multiple servers behind the Reverse Proxy.
+
+Example:  
+Reverse Proxy is used for load balancing, security, caching etc.
+For example, in a web application, the Reverse Proxy (NGINX) receives incoming requests from clients and forwards them to one of the Multiple Servers (Node.js application instances) based on load balancing algorithms. The Reverse Proxy can also provide security features like SSL termination, caching of responses, and protection against DDoS attacks.
+
+**NGINX**  
+
+* Can handle 10K concurrent requests.
+* Cache HTTP requests and responses.
+* Act as a Reverse Proxy to distribute incoming requests to multiple servers, which helps in load balancing and improving performance.
+* Act as a Load Balancer to distribute incoming traffic across multiple servers, ensuring that no single server is overwhelmed and improving the overall performance and reliability of the application.
+* Act as an API Gateway.
+* Serve and cache static files like images, videos etc., which can improve the performance of web applications by reducing the load on the application servers and delivering static content more efficiently.
+* Handle SSL certificates.
+
+---
+
+## #37 Install and Setup Nginx
+
+Setup NGINX using Docker.
+
+Setup an Ubuntu container using Docker and then install NGINX inside it.
+
+`docker ps`
+
+`docker run -it -p 8080:80 ubuntu`
+
+Verify NGINX is working by going to http://localhost:8080 in the browser.  
+OR by typing `curl http://localhost:8080` in the terminal  
+OR by typing `nginx -v` in the terminal of the container to check NGINX version.  
+
+We can also check response headers to verify that NGINX is working.  
+Following response header indicates that the application is hosted by NGINX:  
+Server: nginx/1.25.3 (Ubuntu)
+
+Execute the below command in the terminal of the container to check NGINX files and folders:
+`ls /etc/nginx`
+
+Here nginx.conf is the main configuration file of NGINX, where we can write all the configuration for NGINX.
+
+---
+
+## #38 Serve Static Content with Nginx
+
+/etc/nginx/nginx.conf
+This is the main configuration file of NGINX, where we can write all the configuration for NGINX.
+
+/etc/nginx/mime.types
+This file contains the mapping of file extensions to MIME types. It is used by NGINX to determine the content type of the files it serves. When a client requests a file, NGINX uses the file extension to look up the corresponding MIME type in this file and includes it in the response headers. This helps the client understand how to handle the received file (e.g., display it in the browser, download it, etc.).
+We can also add custom MIME types in this file if needed.  
+We can include this file in the nginx.conf file using the following line:
+`include /etc/nginx/mime.types;`
+that way we can use the MIME types defined in this file in our NGINX configuration.
+
+`nginx -s reload`  
+This command is used to reload the NGINX configuration without restarting the server. It allows you to apply changes made to the NGINX configuration file (nginx.conf) without interrupting the current connections. When you run this command, NGINX will gracefully reload the configuration, allowing existing connections to continue while applying the new configuration for any new incoming requests.
+
+`nginx -t`
+This command is used to test the NGINX configuration for syntax errors. It checks the nginx.conf file for any syntax issues and reports them without actually starting or reloading the NGINX server. This is a useful command to ensure that your configuration changes are valid before applying them with `nginx -s reload`.
+
+---
+
+## #39 Full Node.js Deployment - NGINX, SSL With Lets Encrypt
+
+[Node.js Deployment](https://gist.github.com/piyushgarg-dev/8b14c87c8ff4d626ecbc747b6b9fc57f)
+
+#1  
+Create an AWS account.
+
+#2  
+Create an EC2 instance, SSH into it.
+
+#3  
+Install Node.js, NPM, PM2.
+
+```bash
+sudo apt-get update
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo npm install -g pm2
+```
+
+[Download Node.js](https://nodejs.org/en/download)
+
+#4  
+Clone your Node.js application from Github to the EC2 instance.
+Then install dependencies using `npm install` command.
+
+#5  
+Go to project directory and start the application using PM2.
+
+```bash
+cd your-project-directory
+pm2 start app.js --name "your-app-name"
+```
+
+Other pm2 commands  
+pm2 show app
+pm2 status
+pm2 restart app
+pm2 stop app
+pm2 logs (Show log stream)
+pm2 flush (Clear logs)
+
+To make sure app starts when reboot  
+pm2 startup ubuntu
+
+#6  
+Set MongoDB connection URL in the environment variables on the EC2 instance.
+
+```bash
+export MONGODB_CONNECTION_URL='your-mongodb-connection-url'
+```
+
+And then restart the application using PM2 to apply this environment variable.
+
+```bash
+pm2 restart your-app-name
+```
+
+#7  
+Check logs using `pm2 logs -all` command to make sure everything is working fine.
+
+#8  
+Edit Security Group of the EC2 instance to allow incoming traffic on port 80 (HTTP) and port 443 (HTTPS).
+Add two new rules (one for IPv4 and one for IPv6) with type Custom TCP for port 8001 (application port) to allow incoming traffic on this port as well.
+
+#9  
+Get a free domain name from Freenom and point it to the public IP address of your EC2 instance.
+
+Verify that your application is accessible using this domain name using the following command in the terminal:
+
+```bash
+curl http://your-domain-name:<port>
+
+# OR
+
+nslookup your-domain-name:<port>
+```
+
+#10  
+Setup firewall.
+
+```bash
+sudo ufw enable
+sudo ufw status
+sudo ufw allow ssh # (Port 22)
+sudo ufw allow http # (Port 80)
+sudo ufw allow https # (Port 443)
+```
+
+#11  
+Install NGINX and configure it to serve your Node.js application.
+
+```bash
+sudo apt-get install nginx
+```
+
+#12  
+sudo certbot --nginx -d piyushgarg-dev.ml -d www.piyushgarg-dev.ml
+
+It will generate SSL certificate.
+
+Verify this by visiting the application in your browser.
+
+certbot renew --dry-run
+
+#13
+At the end once application is verified, clean-up AWS account services which are in use.
+Terminate EC2 instance.
+Release Elastic IP address.
+
+---
+
+## #40 Serverless Framework with NodeJS
+
+## #41 What is Serverless? | Serverless Vs Monolith | AWS Lambda
+
+What is Serverless?
+
+Non-serverless  
+We have to manage the server from our end.  
+Server instance is always running regardless of the incoming traffick.  
+Fixed charges based on server instance.
+
+Serverless  
+You don't need to worry about managing server for your application/code.  
+Amazon takes care of everything.  
+Charged per invocation.  
+It autoscales as per the incoming traffick/requests.  
+AWS Lambda Service
+
+Cons  
+Cold start  
+Slow compared to non-serverless architecture  
+Stateless  
+In case of APIs, each API will have its own AWS Lambda function  
+
+[serverless.com](https://www.serverless.com/)
+
+[The Amazon Prime Video Monolith Shift: Dissecting Microservices, Serverless, and the Real-World Cost](https://medium.com/@abhishekranjandev/the-amazon-prime-video-monolith-shift-dissecting-microservices-serverless-and-the-real-world-ec18e429ad6f)
+
+---
+
+## #42 GraphQL Crash Course - GraphQL NodeJS
+
+
+What is GraphQL?
+
+What problem does GraphQL solve?  
+
+REST API
+
+Problem with REST API is - we end up fetching more data than it is actually required.
+
+Multiple clients may need different set of data, and if we are serving those requests with a single API with generic response then we have this problem.
+
+For example,
+
+For our REST APIs Server, we have a following API which returns todos data:  
+GET /todos - returns all the todos
+GET /todos/<id> - returns a todo with an "id"
+
+---
+
+eraser.io
+
+excalidraw.com
+
+---
 
 ## Explore -> Session vs. Cookie
 
