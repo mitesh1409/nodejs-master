@@ -73,7 +73,8 @@ PATCH  - Update an existing resource.
 DELETE - Delete/remove a resource.
 
 Endpoint  
-Endpoint is a full URL that represents a specific resource in the backend.
+Endpoint is a full URL that represents a specific resource in the backend.  
+It may contain query parameters as well.
 
 Request Body  
 In case of POST/PUT request, client sends data to the server in the request body.  
