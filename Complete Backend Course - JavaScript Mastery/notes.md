@@ -2,6 +2,18 @@
 
 [Complete Backend Course | Build and Deploy Your First Production-Ready API](https://www.youtube.com/watch?v=rOpEN1JDaD0)
 
+## Index
+
+* Intro
+* HTTP, DNS, IPs & Networks
+* APIs - The Backends Messenger
+* Types of APIs - REST & GraphQL
+* Backend Languages from Python to JavaScript
+* Databases The Backbone of Your Backend
+* Backend Architectures
+* API Demo & Setup
+
+
 ## Intro
 
 Topics
@@ -157,7 +169,145 @@ Some of the most popular backend frameworks are:
 
 ## Databases The Backbone of Your Backend
 
-continue...
+You may think - why not just store the data directly on the application server (server where the application is deployed)?
+
+We dont't store data directly into the application server because that is inefficient and  
+does not scale as your application grows. That is why every backend application relies on  
+dedicated storage solutions commonly known as databases.
+
+Databases are broadly classified into two main types:  
+
+* Relational Databases
+* Non-Relational/NoSQL Databases
+
+**Relational Databases**  
+Relational databases store data in structured tables with rows and columns  
+much like a spreadsheet. They uses "SQL" (Structured Query Language) to query  
+and manipulate data.  
+Most popular relational databases are - MySQL, PostgreSQL.
+
+When to use relational databases?  
+
+If your application needs structured data with clear relationships then go with  
+relational/SQL databases.  
+When your data is highly structured and relationship between entities are important.  
+For example, banking systems, e-commerce platforms, inventory management etc.  
+
+**Non-Relational/NoSQL Databases**  
+Non-Relational/NoSQL databases offer more flexibility and don't rely on a rigid structure  
+of tables. They can handle unstructured or semi-structured data making them perfect  
+when data relationships are less complex.  
+
+There are subtypes of Non-Relational databases -  
+
+* Document based like MongoDB which stores data into JSON documents
+* Redis which stores data into key-value pairs
+
+When to use Non-Relational/NoSQL databases?  
+
+Non-Relational/NoSQL databases are great for  
+
+* handling large volumes of data
+* real-time analytics
+* flexible data models
+
+If you are handling massive unstructured data or need flexibility then go with  
+Non-Relational/NoSQL databases.  
+
+They are suitable for social media apps, IOT devices or big data analytics.
+
+**How application server interacts with databases?**
+
+There are two ways application server can interact with databases:  
+
+* Raw Queries
+* ORM (Object Relational Mapper)
+
+Using Raw Queries we can perform CRUD operations on database.  
+This gives developers full control but this approach is tedious, lengthy and error prone  
+as developer need to write more code.
+
+That is why many developers use ORMs to interact with databases.  
+ORMs simplify database interactions by letting you write queries in a syntax of your  
+programming language of choice.  
+
+For SQL databases popular ORMs are  
+* [Prisma](https://www.prisma.io/)
+* [drizzle](https://orm.drizzle.team/)
+* [sequelize](https://sequelize.org/)
+
+For NoSQL databases popular ORMs are  
+* [mongoose](https://mongoosejs.com/)
+
+ORMs help developer speed up the development and prevent errors especially in larger projects.  
+
+---
+
+## Backend Architectures
+
+There are a few popular architectures that developers follow depending on their project needs.  
+
+* Monolithic Architecture
+* Microservices Architecture
+* Serverless Architecture
+
+**Monolithic Architecture**  
+
+In a Monolithic Architecture all components of your application are combined into  
+a single unified codebase.  
+Everything is in one place.  
+Backend handles everything, for example - user management, business logic,  
+database interactions etc.  
+
+It is simple to develop and deploy, easier to debug since everything is in one place.  
+
+But as the application grows, gradually the codebase becomes messy.  
+Scaling specific parts of the application can be tricky or even impossible.  
+Everything scales together since everything is in one place, which is not cost effective.  
+
+Suitable for smaller scale projects with small team sizes.  
+Or you can go with Monolith Architecture when you want to quickly start and ship MVP phase  
+of the application.
+
+**Microservices Architecture**  
+
+In Microservices Architecture the application is broken down into smaller independent services.  
+Each service handles a specific business function/feature.  
+
+For example in an e-commerce application we may have the following microservices:  
+
+* Product Catalog
+* Shopping Cart
+* Checkout
+* Authentication
+* Payment
+* Notification
+* Order Tracking
+
+These microservices communicate with each other via APIs.
+
+Microservices Architecture is suitable for the large scale systems or enterprise systems  
+where flexibility and scalability are important.  
+
+**Serverless Architecture**
+
+Serverless Architecture lets you write code without worrying about the underlying infrastructure.  
+
+"AWS Lambda" and "Vercel" handles provisioning scaling and server management for you.  
+
+Fullstack NEXT.js applications use serverless backend.  
+
+Serverless Architecture is suitable for  
+
+* Startups
+* Rapid Prototyping
+* Apps with spiky traffic
+
+---
+
+## API Demo & Setup
+
+
 
 ---
 
@@ -166,3 +316,4 @@ continue...
 * How many IPV6 addresses are there?
 * Can we map IPV4 address to IPV6? If yes then how? Are current domain names have IPV4 or IPV6?
 * Are new domains using IPV4 or IPV6?
+* [httpie](https://httpie.io/)
