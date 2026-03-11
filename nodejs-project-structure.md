@@ -192,3 +192,15 @@ Each module has a single responsibility.
 Follows best practices for scalability and maintainability.
 
 Isolate your logic into distinct modules. This promotes separation of concerns and makes your codebase easier to maintain and scale.  
+
+---
+
+@todo
+
+And add this to your folder structure — it's a meaningful addition for a boilerplate:
+
+root/
+├── .vscode/
+│   └── settings.json    ← VS Code workspace settings
+├── src/
+├── ...
