@@ -312,7 +312,7 @@ Serverless Architecture is suitable for
 Create a GitHub repo.
 Clone into local machine.
 Add "type": "module" line in package.json file to use ESM.
-ESLint setup for Node.js + Express.js using JavaScript.
+ESLint & Prettier setup for Node.js + Express.js using JavaScript.
 Install nodemon.
 Set required scripts.
 
