@@ -309,7 +309,12 @@ Serverless Architecture is suitable for
 
 ## API Demo & Setup
 
-
+Create a GitHub repo.
+Clone into local machine.
+Add "type": "module" line in package.json file to use ESM.
+ESLint setup for Node.js + Express.js using JavaScript.
+Install nodemon.
+Set required scripts.
 
 ---
 
@@ -319,3 +324,303 @@ Serverless Architecture is suitable for
 * Can we map IPV4 address to IPV6? If yes then how? Are current domain names have IPV4 or IPV6?
 * Are new domains using IPV4 or IPV6?
 * [httpie](https://httpie.io/)
+* [upstash](https://upstash.com/)
+* [Arcjet](https://app.arcjet.com/auth/signin)
+
+---
+
+## Temporary
+
+Here's a comprehensive step-by-step guide to set up ESLint + Prettier for your Node.js + Express (JavaScript) project.
+
+---
+
+## The stack
+
+- **ESLint** — linting (catches bugs, enforces code quality)
+- **Prettier** — formatting (handles style: indentation, quotes, semicolons, etc.)
+- **`eslint-config-airbnb-base`** — the most widely adopted JS ruleset in the industry
+- **`eslint-config-prettier`** — disables ESLint rules that conflict with Prettier
+- **`eslint-plugin-import`** — enforces clean ES module import/export patterns (required by airbnb-base)
+- **`eslint-plugin-node`** or **`eslint-plugin-n`** — Node.js-specific rules
+
+---
+
+## Step 1 — Initialize your project
+
+If you haven't already:
+
+```bash
+npm init -y
+```
+
+---
+
+## Step 2 — Install ESLint and Prettier
+
+```bash
+npm install --save-dev eslint prettier
+```
+
+**Reference links:**
+- ESLint docs: https://eslint.org/docs/latest/
+- Prettier docs: https://prettier.io/docs/en/
+
+---
+
+## Step 3 — Install the industry-standard ruleset and plugins which are compatible with flag config
+
+```bash
+npm install --save-dev \
+  eslint-config-prettier \
+  eslint-plugin-import \
+  eslint-plugin-n \
+  @eslint/eslintrc
+```
+
+You also need to install the :
+
+- `eslint-config-prettier` — https://github.com/prettier/eslint-config-prettier
+- `eslint-plugin-import` — https://github.com/import-js/eslint-plugin-import
+- `eslint-plugin-n` — https://github.com/eslint-community/eslint-plugin-n
+- `@eslint/eslintrc` - To use `FlatCompat` utility from this package
+- `eslint-config-airbnb-base` — https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base
+
+> **Why airbnb-base?** It's the most widely used ESLint config in the JS ecosystem. It enforces a strong, well-documented set of rules based on the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
+
+> **Note on `eslint-config-airbnb-base`:** The classic `eslint-config-airbnb-base` package **does not officially support flat config yet** as of early 2025. The community-maintained drop-in replacement for flat config is **`eslint-config-airbnb-base`** via a compatibility utility, or better — use **`@eslint/eslintrc`**'s `FlatCompat` helper to wrap it. This is the official migration path recommended by the ESLint team.
+
+Reference:  
+* https://eslint.org/docs/latest/use/configure/migration-guide
+* https://github.com/eslint/eslintrc?tab=readme-ov-file#user-content-flatcompat
+
+---
+
+## Step 4 — Create your ESLint config
+
+First, make sure your `package.json` has `"type": "module"` **or** name the file `eslint.config.mjs`. Using `"type": "module"` is the cleaner approach for a modern project:
+
+```json
+// package.json
+{
+  "type": "module"
+}
+```
+
+Now create **`eslint.config.js`** in your project root:
+
+```js
+import { FlatCompat } from '@eslint/eslintrc';
+import { fileURLToPath } from 'url';
+import path from 'path';
+import pluginImport from 'eslint-plugin-import';
+import pluginN from 'eslint-plugin-n';
+import prettier from 'eslint-config-prettier';
+
+// Required to use __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// FlatCompat lets you use legacy configs (like airbnb-base) in flat config
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+});
+
+export default [
+  // 1. Files/folders to ignore (replaces .eslintignore)
+  {
+    ignores: ['node_modules/**', 'dist/**', 'build/**', 'coverage/**'],
+  },
+
+  // 2. Apply airbnb-base via FlatCompat shim
+  ...compat.extends('airbnb-base'),
+
+  // 3. Your main config block
+  {
+    files: ['**/*.js'],
+    plugins: {
+      import: pluginImport,
+      n: pluginN,
+    },
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        // Node.js globals
+        process: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        console: 'readonly',
+        Buffer: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+      },
+    },
+    rules: {
+      'no-console': 'warn',
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'consistent-return': 'off',
+      'import/extensions': ['error', 'ignorePackages'],
+    },
+  },
+
+  // 4. Prettier MUST be last — disables conflicting formatting rules
+  prettier,
+];
+```
+
+---
+
+## Step 5 — Create your Prettier config
+
+Create `.prettierrc` in your project root:
+
+```json
+{
+  "singleQuote": true,
+  "semi": true,
+  "trailingComma": "es5",
+  "printWidth": 100,
+  "tabWidth": 2,
+  "arrowParens": "always"
+}
+```
+
+These are sane, widely-used defaults. Reference: https://prettier.io/docs/en/options.html
+
+Also create `.prettierignore`:
+
+```
+node_modules
+dist
+build
+coverage
+```
+
+---
+
+## Step 7 — Add scripts to `package.json`
+
+```json
+{
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  }
+}
+```
+
+Usage:
+- `npm run lint` — check for lint errors
+- `npm run lint:fix` — auto-fix fixable lint errors
+- `npm run format` — format all files with Prettier
+- `npm run format:check` — check if files are already formatted (useful in CI)
+
+> Note: With flat config you no longer need `--ext .js` — ESLint v9 uses the `files` glob pattern inside `eslint.config.js` instead.
+
+---
+
+## Step 8 — (Optional but recommended) Add lint-staged + Husky for pre-commit hooks
+
+This ensures code is always linted and formatted before it's committed.
+
+```bash
+npm install --save-dev husky lint-staged
+npx husky init
+```
+
+Add to `package.json`:
+
+```json
+{
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
+```
+
+Then set the pre-commit hook in `.husky/pre-commit`:
+
+```bash
+npx lint-staged
+```
+
+**Reference links:**
+- Husky: https://typicode.github.io/husky/
+- lint-staged: https://github.com/lint-staged/lint-staged
+
+---
+
+## Step 9 — VS Code integration (optional)
+
+Install these extensions:
+- **ESLint** — https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+- **Prettier** — https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+
+Add to `.vscode/settings.json`:
+
+```json
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.enable": true,
+  "eslint.useFlatConfig": true
+}
+```
+
+---
+
+## Final project structure
+
+```
+your-project/
+├── eslint.config.js        ← replaces .eslintrc.json
+├── .prettierrc
+├── .prettierignore
+├── .husky/
+│   └── pre-commit
+├── package.json            ← needs "type": "module"
+└── src/
+    └── app.js
+```
+
+---
+
+## Quick reference summary
+
+| Package | Purpose | Link |
+|---|---|---|
+| `eslint` | Core linter | https://eslint.org |
+| `prettier` | Code formatter | https://prettier.io |
+| `eslint-config-airbnb-base` | Industry-standard rules | https://github.com/airbnb/javascript |
+| `eslint-plugin-import` | Import/export rules | https://github.com/import-js/eslint-plugin-import |
+| `eslint-plugin-n` | Node.js-specific rules | https://github.com/eslint-community/eslint-plugin-n |
+| `eslint-config-prettier` | Disables ESLint formatting conflicts | https://github.com/prettier/eslint-config-prettier |
+| `husky` | Git hooks | https://typicode.github.io/husky |
+| `lint-staged` | Run linters on staged files | https://github.com/lint-staged/lint-staged |
+
+This setup is what you'll find in the vast majority of production Node.js projects and open source repos. The airbnb-base config is opinionated but well-documented — every rule has a rationale you can look up at https://github.com/airbnb/javascript.
+
+---
+
+## Key migration reference links
+
+| Topic | Link |
+|---|---|
+| ESLint v9 flat config overview | https://eslint.org/docs/latest/use/configure/configuration-files |
+| Migrating from `.eslintrc` to flat config | https://eslint.org/docs/latest/use/configure/migration-guide |
+| `FlatCompat` API (for legacy configs) | https://github.com/eslint/eslintrc#flatcompat |
+| `eslint-config-prettier` flat config usage | https://github.com/prettier/eslint-config-prettier#installation |
+| `eslint-plugin-n` flat config usage | https://github.com/eslint-community/eslint-plugin-n#-usage |
+
+The `FlatCompat` shim is a temporary bridge — once `eslint-config-airbnb-base` officially ships flat config support, you'll be able to import it directly without the shim and simplify the config further.
