@@ -32,6 +32,8 @@ Topics
 * DNS (Domain Name System)
 * IP Address
 
+Client and Server communicates using HTTP/HTTPS protocol.
+
 DNS (Domain Name System)
 
 Humans need easy to remember names to access a website whereas  
