@@ -331,6 +331,10 @@ Set required scripts.
 
 ## Temporary
 
+Reference: https://claude.ai/chat/4a7e8cc0-6d2d-4f7d-8a1f-9eeeb3dc8a13
+
+Prettier owns all formatting; ESLint owns code quality.
+
 Here's a comprehensive step-by-step guide to set up ESLint + Prettier for your Node.js + Express (JavaScript) project.
 
 ---
