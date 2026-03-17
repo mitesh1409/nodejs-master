@@ -332,6 +332,10 @@ Set required scripts.
 
 ## Temporary
 
+Reference: https://claude.ai/chat/4a7e8cc0-6d2d-4f7d-8a1f-9eeeb3dc8a13
+
+Prettier owns all formatting; ESLint owns code quality.
+
 Here's a comprehensive step-by-step guide to set up ESLint + Prettier for your Node.js + Express (JavaScript) project.
 
 ---
@@ -363,7 +367,8 @@ npm init -y
 npm install --save-dev eslint prettier
 ```
 
-**Reference links:**
+**Reference links:**  
+
 - ESLint docs: https://eslint.org/docs/latest/
 - Prettier docs: https://prettier.io/docs/en/
 
@@ -373,25 +378,25 @@ npm install --save-dev eslint prettier
 
 ```bash
 npm install --save-dev \
+  eslint-config-airbnb-base \
   eslint-config-prettier \
   eslint-plugin-import \
   eslint-plugin-n \
   @eslint/eslintrc
 ```
 
-You also need to install the :
-
-- `eslint-config-prettier` — https://github.com/prettier/eslint-config-prettier
-- `eslint-plugin-import` — https://github.com/import-js/eslint-plugin-import
-- `eslint-plugin-n` — https://github.com/eslint-community/eslint-plugin-n
-- `@eslint/eslintrc` - To use `FlatCompat` utility from this package
-- `eslint-config-airbnb-base` — https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base
+* `eslint-config-airbnb-base` — https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base
+* `eslint-config-prettier` — https://github.com/prettier/eslint-config-prettier
+* `eslint-plugin-import` — https://github.com/import-js/eslint-plugin-import
+* `eslint-plugin-n` — https://github.com/eslint-community/eslint-plugin-n
+* `@eslint/eslintrc` - To use `FlatCompat` utility from this package
 
 > **Why airbnb-base?** It's the most widely used ESLint config in the JS ecosystem. It enforces a strong, well-documented set of rules based on the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
 
 > **Note on `eslint-config-airbnb-base`:** The classic `eslint-config-airbnb-base` package **does not officially support flat config yet** as of early 2025. The community-maintained drop-in replacement for flat config is **`eslint-config-airbnb-base`** via a compatibility utility, or better — use **`@eslint/eslintrc`**'s `FlatCompat` helper to wrap it. This is the official migration path recommended by the ESLint team.
 
 Reference:  
+
 * https://eslint.org/docs/latest/use/configure/migration-guide
 * https://github.com/eslint/eslintrc?tab=readme-ov-file#user-content-flatcompat
 
@@ -502,7 +507,7 @@ coverage
 
 ---
 
-## Step 7 — Add scripts to `package.json`
+## Step 6 — Add scripts to `package.json`
 
 ```json
 {
@@ -525,7 +530,7 @@ Usage:
 
 ---
 
-## Step 8 — (Optional but recommended) Add lint-staged + Husky for pre-commit hooks
+## Step 7 — (Optional but recommended) Add lint-staged + Husky for pre-commit hooks
 
 This ensures code is always linted and formatted before it's committed.
 
@@ -559,7 +564,7 @@ npx lint-staged
 
 ---
 
-## Step 9 — VS Code integration (optional)
+## Step 8 — VS Code integration (optional)
 
 Install these extensions:
 - **ESLint** — https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
