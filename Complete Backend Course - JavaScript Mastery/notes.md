@@ -378,12 +378,30 @@ npm install --save-dev eslint prettier
 
 ```bash
 npm install --save-dev \
-  eslint-config-airbnb-base \
   eslint-config-prettier \
   eslint-plugin-import \
   eslint-plugin-n \
   @eslint/eslintrc
+
+npm install --save-dev eslint-config-airbnb-base --legacy-peer-deps
 ```
+
+**A known peer dependency conflict - `eslint-config-airbnb-base` depends on ESLint v7/v8 but you may have ESLint v9 installed**
+
+eslint-config-airbnb-base@15.0.0  →  expects eslint "^7.32.0 || ^8.2.0"
+your project                      →  has eslint@9.39.4
+
+This is a known peer dependency conflict. `eslint-config-airbnb-base@15.0.0` was built for ESLint v7/v8, but you have ESLint v9 installed. This is exactly the reason we use the `FlatCompat` shim — but the package still needs to be physically installed regardless.
+
+```bash
+npm install --save-dev eslint-config-airbnb-base --legacy-peer-deps
+```
+
+`--legacy-peer-deps` tells npm to ignore the peer dependency version conflict and install anyway. This is safe here because:
+
+- `eslint-config-airbnb-base` is only used as a **config/rules source**
+- The actual ESLint engine running is still your v9
+- `FlatCompat` acts as the bridge between the two — it was specifically designed to handle this exact situation
 
 * `eslint-config-airbnb-base` — https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base
 * `eslint-config-prettier` — https://github.com/prettier/eslint-config-prettier
