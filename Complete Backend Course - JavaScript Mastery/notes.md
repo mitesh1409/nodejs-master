@@ -362,7 +362,8 @@ npm init -y
 npm install --save-dev eslint prettier
 ```
 
-**Reference links:**
+**Reference links:**  
+
 - ESLint docs: https://eslint.org/docs/latest/
 - Prettier docs: https://prettier.io/docs/en/
 
@@ -372,25 +373,25 @@ npm install --save-dev eslint prettier
 
 ```bash
 npm install --save-dev \
+  eslint-config-airbnb-base \
   eslint-config-prettier \
   eslint-plugin-import \
   eslint-plugin-n \
   @eslint/eslintrc
 ```
 
+* `eslint-config-airbnb-base` — https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base
 * `eslint-config-prettier` — https://github.com/prettier/eslint-config-prettier
 * `eslint-plugin-import` — https://github.com/import-js/eslint-plugin-import
 * `eslint-plugin-n` — https://github.com/eslint-community/eslint-plugin-n
 * `@eslint/eslintrc` - To use `FlatCompat` utility from this package
-
-Regarding `eslint-config-airbnb-base` — https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base  
-Do not install it as it does not support flat config yet.
 
 > **Why airbnb-base?** It's the most widely used ESLint config in the JS ecosystem. It enforces a strong, well-documented set of rules based on the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
 
 > **Note on `eslint-config-airbnb-base`:** The classic `eslint-config-airbnb-base` package **does not officially support flat config yet** as of early 2025. The community-maintained drop-in replacement for flat config is **`eslint-config-airbnb-base`** via a compatibility utility, or better — use **`@eslint/eslintrc`**'s `FlatCompat` helper to wrap it. This is the official migration path recommended by the ESLint team.
 
 Reference:  
+
 * https://eslint.org/docs/latest/use/configure/migration-guide
 * https://github.com/eslint/eslintrc?tab=readme-ov-file#user-content-flatcompat
 
