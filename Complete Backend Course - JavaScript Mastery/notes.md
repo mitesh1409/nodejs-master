@@ -378,13 +378,13 @@ npm install --save-dev \
   @eslint/eslintrc
 ```
 
-You also need to install the :
+* `eslint-config-prettier` — https://github.com/prettier/eslint-config-prettier
+* `eslint-plugin-import` — https://github.com/import-js/eslint-plugin-import
+* `eslint-plugin-n` — https://github.com/eslint-community/eslint-plugin-n
+* `@eslint/eslintrc` - To use `FlatCompat` utility from this package
 
-- `eslint-config-prettier` — https://github.com/prettier/eslint-config-prettier
-- `eslint-plugin-import` — https://github.com/import-js/eslint-plugin-import
-- `eslint-plugin-n` — https://github.com/eslint-community/eslint-plugin-n
-- `@eslint/eslintrc` - To use `FlatCompat` utility from this package
-- `eslint-config-airbnb-base` — https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base
+Regarding `eslint-config-airbnb-base` — https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base  
+Do not install it as it does not support flat config yet.
 
 > **Why airbnb-base?** It's the most widely used ESLint config in the JS ecosystem. It enforces a strong, well-documented set of rules based on the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
 
@@ -501,7 +501,7 @@ coverage
 
 ---
 
-## Step 7 — Add scripts to `package.json`
+## Step 6 — Add scripts to `package.json`
 
 ```json
 {
@@ -524,7 +524,7 @@ Usage:
 
 ---
 
-## Step 8 — (Optional but recommended) Add lint-staged + Husky for pre-commit hooks
+## Step 7 — (Optional but recommended) Add lint-staged + Husky for pre-commit hooks
 
 This ensures code is always linted and formatted before it's committed.
 
@@ -558,7 +558,7 @@ npx lint-staged
 
 ---
 
-## Step 9 — VS Code integration (optional)
+## Step 8 — VS Code integration (optional)
 
 Install these extensions:
 - **ESLint** — https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
