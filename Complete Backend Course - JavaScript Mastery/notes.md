@@ -487,6 +487,22 @@ export default [
       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'consistent-return': 'off',
       'import/extensions': ['error', 'ignorePackages'],
+      'import/no-extraneous-dependencies': [
+        'error',
+        {
+          devDependencies: [
+            'eslint.config.js', // allow dev imports in ESLint config file
+            '**/*.test.js', // allow dev imports in test files
+            '**/*.spec.js', // allow dev imports in spec files
+          ],
+        },
+      ],
+      'no-underscore-dangle': [
+        'error',
+        {
+          allow: ['__filename', '__dirname'], // these are Node.js conventions
+        },
+      ],
     },
   },
 
