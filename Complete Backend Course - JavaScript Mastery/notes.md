@@ -12,6 +12,8 @@
 * Databases The Backbone of Your Backend
 * Backend Architectures
 * API Demo & Setup
+* Create Express.js Server
+* Config
 
 
 ## Intro
@@ -313,9 +315,9 @@ X Create a GitHub repo.
 X Clone into local machine.
 X Do npm init
 X Add "type": "module" line in package.json file to use ESM.
-ESLint & Prettier setup for Node.js + Express.js using JavaScript.
-Install nodemon.
-Set required scripts.
+X ESLint & Prettier setup for Node.js + Express.js using JavaScript.
+X Install nodemon.
+X Set required scripts.
 
 ---
 
