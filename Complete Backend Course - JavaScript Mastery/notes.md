@@ -309,9 +309,10 @@ Serverless Architecture is suitable for
 
 ## API Demo & Setup
 
-Create a GitHub repo.
-Clone into local machine.
-Add "type": "module" line in package.json file to use ESM.
+X Create a GitHub repo.
+X Clone into local machine.
+X Do npm init
+X Add "type": "module" line in package.json file to use ESM.
 ESLint & Prettier setup for Node.js + Express.js using JavaScript.
 Install nodemon.
 Set required scripts.
