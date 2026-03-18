@@ -346,6 +346,13 @@ References:
 * https://thecodebuzz.com/restful-api-url-naming-conventions-best-practices/
 * https://avaldes.com/best-practices-for-restful-api-design/
 
+For testing APIs we can use HTTP Clients like:  
+
+* [Postman](https://www.postman.com/)
+* [Bruno](https://www.usebruno.com/)
+* [httpie](https://httpie.io/)
+* [Insomnia](https://insomnia.rest/)
+
 ---
 
 ## Explore  
