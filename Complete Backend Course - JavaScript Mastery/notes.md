@@ -17,7 +17,6 @@
 * Routes
 * MongoDB
 
-
 ## Intro
 
 Topics
@@ -320,6 +319,38 @@ X Add "type": "module" line in package.json file to use ESM.
 X ESLint & Prettier setup for Node.js + Express.js using JavaScript.
 X Install nodemon.
 X Set required scripts.
+
+---
+
+## Create Express.js Server
+
+---
+
+## Config
+
+Install dotenv package.
+Create required .env files - .env.development.local, .env.production.local.
+Create config/env.js file to load all the env params and then use it in the application.
+
+---
+
+## Routes
+
+Follow REST API guidelines while defining routes
+
+References:  
+
+* https://medium.com/@nadinCodeHat/rest-api-naming-conventions-and-best-practices-1c4e781eb6a5
+* https://restfulapi.net/resource-naming/
+* https://thecodebuzz.com/restful-api-url-naming-conventions-best-practices/
+* https://avaldes.com/best-practices-for-restful-api-design/
+
+For testing APIs we can use HTTP Clients like:  
+
+* [Postman](https://www.postman.com/)
+* [Bruno](https://www.usebruno.com/)
+* [httpie](https://httpie.io/)
+* [Insomnia](https://insomnia.rest/)
 
 ---
 
