@@ -14,6 +14,8 @@
 * API Demo & Setup
 * Create Express.js Server
 * Config
+* Routes
+* MongoDB
 
 
 ## Intro
@@ -329,6 +331,8 @@ X Set required scripts.
 * [httpie](https://httpie.io/)
 * [upstash](https://upstash.com/)
 * [Arcjet](https://app.arcjet.com/auth/signin)
+* PostgreSQL
+* [NEON](https://neon.com)
 
 ---
 
