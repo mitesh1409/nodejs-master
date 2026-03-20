@@ -16,6 +16,8 @@
 * Config
 * Routes
 * MongoDB
+* Models
+
 
 ## Intro
 
