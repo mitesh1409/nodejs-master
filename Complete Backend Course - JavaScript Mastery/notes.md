@@ -17,6 +17,7 @@
 * Routes
 * MongoDB
 * Models
+* Error Handlers
 
 
 ## Intro
