@@ -18,6 +18,7 @@
 * MongoDB
 * Models
 * Error Handlers
+* Authentication
 
 
 ## Intro
@@ -354,6 +355,19 @@ For testing APIs we can use HTTP Clients like:
 * [Bruno](https://www.usebruno.com/)
 * [httpie](https://httpie.io/)
 * [Insomnia](https://insomnia.rest/)
+
+---
+
+## Authentication
+
+Database -> Atomic Operations
+
+Database operations that update the state are atomic.  
+All or nothing.
+
+Insert either works completely or it doesn't.  
+Update either works completely or it doesn't.  
+You never get half an operation.
 
 ---
 
