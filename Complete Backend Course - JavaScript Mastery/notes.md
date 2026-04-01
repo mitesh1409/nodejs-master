@@ -19,6 +19,11 @@
 * Models
 * Error Handlers
 * Authentication
+* Authorization
+* Arcjet
+* Subscriptions
+* Reminder Workflow
+* Send Emails
 
 
 ## Intro
