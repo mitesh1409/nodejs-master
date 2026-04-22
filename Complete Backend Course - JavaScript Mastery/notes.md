@@ -423,6 +423,7 @@ We pass the created subscription ID to our Workflow.
 * PostgreSQL
 * [NEON](https://neon.com)
 * [dayjs](https://www.npmjs.com/package/dayjs)
+* [Nodemailer](https://nodemailer.com/)
 
 ---
 
