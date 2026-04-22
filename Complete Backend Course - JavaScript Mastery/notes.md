@@ -410,6 +410,18 @@ We pass the created subscription ID to our Workflow.
 - The process repeats for all the reminders in the list.
 - After processing all the reminders, the workflow concludes.
 
+
+Amazon Simple Workflow Service (SWF)
+
+---
+
+## Send Emails
+
+[Nodemailer](https://nodemailer.com/)
+
+
+
+
 ---
 
 ## Explore  
@@ -424,6 +436,7 @@ We pass the created subscription ID to our Workflow.
 * [NEON](https://neon.com)
 * [dayjs](https://www.npmjs.com/package/dayjs)
 * [Nodemailer](https://nodemailer.com/)
+* Amazon Simple Workflow Service (SWF)
 
 ---
 
