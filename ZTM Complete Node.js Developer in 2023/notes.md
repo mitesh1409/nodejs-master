@@ -1,17 +1,21 @@
 # Complete Node.js Developer by ZTM Udemy
 
+---
+
 ## Section 1: Introduction
+
+---
 
 ### #4 Node.js - How We Got Here
 
 **Where do we run JavaScript code?**  
-We execute JavaScript code inside browsers (Chrome, Safari, Firefox etc.).
+We execute JavaScript code inside browsers (Chrome, Safari, Firefox etc.).  
 Every browser has a built-in "JavaScript Engine" using which it can run JavaScript code.
 
 **Are we able to run JavaScript code outside of the browser?**  
-Yes
-Node.js is a "JavaScript Runtime" built on "Chrome's V8 JavaScript Engine".
-Node.js is an open source, cross-platform JavaScript runtime environment.
+Yes  
+Node.js is a "JavaScript Runtime" built on "Chrome's V8 JavaScript Engine".  
+Node.js is an open source, cross-platform JavaScript runtime environment.  
 Using Node.js we can run JavaScript outside of the browser.
 
 **Refer**
@@ -37,26 +41,27 @@ Node.js is made up of - V8 JavaScript Engine + libuv
 An environment that allows to run JavaScript.
 
 **What is libuv?**  
-libuv is a multi-platform C library that provides support
-for asynchronous I/O operations based on event loops.
+libuv is a multi-platform C library that provides support  
+for asynchronous I/O operations based on event loop.
 
-Things that are not part of the "V8 JavaScript Engine" like
+Things that are not part of the "V8 JavaScript Engine" like  
 
 - file operations (read/write etc)
 - database operations
-and so on...
+
+and so on...  
 they are handled by "libuv".
 
 **The Node.js System**  
 ![The Node.js System](images/the-nodejs-system.png "The Node.js System")
 
 **Is Web browser a JavaScript runtime?**  
-Yes
-A browser contains a Javascript Engine (for example Chrome's v8).
-The engine implements a Javascript runtime, which includes the call stack,
-heap and event loop. The browser also usually includes a set of APIs
-that augment the Javascript runtime and make asynchronous code execution possible.
-NodeJS also implements a Javascript runtime using Chrome's v8 engine
+Yes  
+A browser contains a Javascript Engine (for example Chrome's v8).  
+The engine implements a Javascript runtime, which includes the call stack, heap and event loop.  
+The browser also usually includes a set of APIs that augment the Javascript runtime  
+and make asynchronous code execution possible.  
+NodeJS also implements a Javascript runtime using Chrome's v8 engine  
 as well as the libuv library (event loop and worker threads).
 
 Here are good video lessons that breaks this all down:
@@ -102,20 +107,31 @@ Here are good video lessons that breaks this all down:
 
 ## Section 2: Node.js Fundamentals: Foundations and Environment Setup
 
+---
+
 ### #10 Installing Node.js
 
 **LTS vs Current**  
-We should use LTS version.
-LTS version is more stable compared to Current version.
+We should use LTS version, LTS - Long Term Support.  
+LTS version is more stable compared to Current version.  
 
-LTS versions are even numbers.
-Current versions are odd numbers.
+LTS versions are even numbers.  
+Current versions are odd numbers.  
+
+LTS versions have two phases:  
+
+1. Active
+    Backward compatible feature changes are allowed/accepted.
+    This will be then released by incrementing the MINOR version.
+2. Maintenance
+    Only backward compatible bug fixes and/or security fixes are allowed.
+    This will be then released by incrementing the PATCH version.
 
 **nvm**  
-To manage multiple node.js versions on our machine we can use "nvm" tool.
+To manage multiple node.js versions on our machine we can use "nvm" tool.  
 nvm = Node Version Manager
 
-**Refer**
+**Refer**  
 
 - [Node.js Downloads & Installation](https://nodejs.org/en/download/)
 - [nvm](https://github.com/nvm-sh/nvm)
@@ -124,20 +140,20 @@ nvm = Node Version Manager
 
 ### #12 The Node.js Release Cycle
 
-**Current Version**
+**Current Version**  
 
 * Offers latest features
 * Less stable compared to LTS version
 * Not recommended for production
 * Has an odd number
 
-**LTS Version**
+**LTS Version**  
 
 * More stable
 * Recommended for production
 * Has an even number
 
-**Refer**
+**Refer**  
 
 - [Node.js Releases](https://nodejs.org/en/about/previous-releases)
 
@@ -153,15 +169,14 @@ REPL stands for
 - Print
 - Loop
 
-Open your terminal, type "node" & hit ENTER.
-We enter into the Node.js REPL mode.
-Here we can execute JavaScript code.
+Open your terminal, type "node" & hit ENTER.  
+We enter into the Node.js REPL mode.  
+Here we can execute JavaScript code.  
 
 **Why REPL**  
-REPL is useful for testing small amount of code in the isolation.
-It is a way to confirm its working as expected before using it into
-the existing application.
-It is not suitable for writing bigger application or script.
+REPL is useful for testing small amount of code in the isolation.  
+It is a way to confirm its working as expected before using it into the existing application.  
+It is not suitable for writing bigger application or script.  
 
 ---
 
@@ -191,15 +206,20 @@ Check "apps/1-first-app" application.
 
 ### #17 Node.js Vs JavaScript
 
+Node.js is a JavaScript Runtime.  
+JavaScript is a programming language.  
+We require a JavaScript Runtime to execute JavaScript applications.  
+Node.js, Deno, Bun, Browsers etc. are JavaScript Runtimes.  
+
 **Difference between Node.js & Browser**  
-Browser specific objects are not available inside Node.js.
-For example "window" object is available in Browser but not in Node.js.
+Browser specific objects are not available inside Node.js.  
+For example "window" object is available in Browser but not in Node.js.  
 
-Vice versa
-Node.js specific objects won't be available inside Browser.
-For example "process" object is available in Node.js but not in Browser.
+Vice versa  
+Node.js specific objects won't be available inside Browser.  
+For example "process" object is available in Node.js but not in Browser.  
 
-Node.js is a JavaScript runtime.
+Node.js is a JavaScript runtime.  
 It does not contain browser specific objects like "window", "document" etc.
 
 | Node.js | Browser |
@@ -210,7 +230,7 @@ It does not contain browser specific objects like "window", "document" etc.
 | __filename | location |
 | require() | navigator |
 
-**Refer**
+**Refer**  
 
 - [Johnny-Five | the JavaScript Robotics & IoT Platform](http://johnny-five.io/)
 - [Deno | The easiest, most secure JavaScript runtime](https://deno.land/)
@@ -236,9 +256,9 @@ Node.js is used to create back-end servers for web/mobile applications.
 - delivering media contents, images/audio/video etc.
 
 **Front-end -> HTML, CSS, JavaScript**  
-HTML, CSS & JavaScript are used to create front-end of the web/mobile application.
-Front-end is what user can see on their web/mobile screens.
-It also provides a way for user interaction.
+HTML, CSS & JavaScript are used to create front-end of the web/mobile application.  
+Front-end is what user can see on their web/mobile screens.  
+It also provides a way for user interaction.  
 
 **HTTP/HTTPS**  
 Client and server communicates using HTTP/HTTPS protocol.
@@ -247,7 +267,7 @@ Client and server communicates using HTTP/HTTPS protocol.
 
 ### #20 Monthly Coding Challenges, Free Resources & Guides
 
-**Refer**
+**Refer**  
 
 - [ZTM Monthly Coding Challenges](https://zerotomastery.io/community/coding-challenges/)
 - [Guides/ZTM Blog](https://zerotomastery.io/blog/)
@@ -1849,7 +1869,7 @@ increment the:
 
 1. MAJOR version when you make incompatible API changes  
 2. MINOR version when you add functionality in a backward compatible manner  
-3. PATCH version when you make backward compatible bug fixes  
+3. PATCH version when you make backward compatible bug fixes OR security fixes  
 
 **MAJOR**  
 It can introduce breaking changes, major changes to the previous/current version.  
