@@ -473,6 +473,9 @@ So if a CPU has 4 chores, then it can execute 4 threads simultaneously.
 
 > JavaScript is a single threaded programming language.
 
+In Node.js we have one main thread which executes JavaScript and Event Loop.  
+Other threads are managed by the Event Loop, as a developer we don't need to worry about them.
+
 ---
 
 ### #29 Is Node.js Multi-Threaded?
