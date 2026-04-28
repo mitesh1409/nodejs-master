@@ -1517,9 +1517,9 @@ Check "apps/14-http-app" application.
 
 **Module and its benefits**  
 
-What is a Module?
-Imagine a module as a box.
-This box contains some code which is dedicated to doing one thing well.
+What is a Module?  
+Imagine a module as a box.  
+This box contains some code which is dedicated to doing one thing well.  
 We can name/label this box.
 
 We can then combine/use multiple modules to create our app.
@@ -1597,6 +1597,8 @@ CommonJS is mostly known for being used in Node.js.
 It is also used in MongoDB.
 
 CommonJS modules  
+It is the default module system used by Node.js.  
+Specifically developed for Node.js.  
 import => use `require` function  
 export => use `module.exports` statement  
 It is used in Node.js and MongoDB.  
@@ -1605,6 +1607,8 @@ ECMAScript Modules are also known as ES6 modules or ESM for short.
 ES6 modules are imported using `import` statements and exported using `export` statement.  
 
 ECMAScript Modules/ES6 Modules  
+It was introduced in ES6/ES2015 language specification.  
+It is a JavaScript standard and can be used in any JavaScript Runtime (like browsers, Node.js etc.).  
 import => use `import` statement  
 export => use `export` statement  
 It is used in Browser side & Node.js as well.  
@@ -1672,8 +1676,8 @@ Check "apps/15-modules-example" application.
 
 ESM/ES6 Modules in Node.js handle caching differently than CommonJS modules.  
 
-ES Modules implement their own caching mechanism that is distinct from the `require.cache` object  
-used by CommonJS.  
+ES Modules implement their own caching mechanism that is distinct from the  
+`require.cache` object used by CommonJS.  
 
 Here's how it works:  
 
