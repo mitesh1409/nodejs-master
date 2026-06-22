@@ -668,7 +668,6 @@ Node.js doesn't need a server like Apache to handle multiple client requests.
 ### #34 What Is Node.js Best At?
 
 **Node.js is best at creating Web Servers**  
-Node.js is best at creating web servers.
 
 Node.js works really well when your main performance problem is input/output
 rather than heavy calculations.
