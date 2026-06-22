@@ -383,7 +383,7 @@ Check "apps/2-second-app" application.
 
 ### #25 Asynchronous Callbacks
 
-**What is Asynchronous Callbacks?**
+**What is Asynchronous Callbacks?**  
 Callback is a function that is set to execute once an event occurs.
 
 Some real life examples
