@@ -684,7 +684,7 @@ Node.js is not good at
 
 ### #35 Observer Design Pattern
 
-**About Observer Design Pattern?**
+**About Observer Design Pattern?**  
 We make use of "Observer Design Pattern" to deal with Asynchronous events.
 
 There are two entities involved:  
