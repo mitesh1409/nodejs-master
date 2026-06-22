@@ -692,22 +692,22 @@ There are two entities involved:
 - Subject
 - Observers
 
-Example
-Imagine a celebrity, for example "Keanu Reeves".
+**Example**  
+Imagine a celebrity, for example "Keanu Reeves".  
 He is a "Subject".
 
-He has millions of fans who love to "observe" him.
-These are "Observers".
+He has millions of fans who love to "observe" him.  
+These are "Observers".  
 Just like they are following him on Twitter.
 
-Observers are subscribed to get updates from the Subject.
+Observers are subscribed to get updates from the Subject.  
 
-Now when Keanu Reeves tweets a post about his latest movie or an event,
+Now when Keanu Reeves tweets a post about his latest movie or an event,  
 all his followers get notified, they get the updates.
 
-Node.js is an asynchronous event-driven JavaScript runtime.
+Node.js is an asynchronous event-driven JavaScript runtime.  
 
-Here event-driven means - a "Subject" can emit one or more events and
+Here event-driven means - a "Subject" can emit one or more events and  
 its "Observers" are notified about it.
 
 ![Observer Design Pattern](images/observer-pattern.png "Observer Design Pattern")
