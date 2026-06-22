@@ -120,12 +120,12 @@ Current versions are odd numbers.
 
 LTS versions have two phases:  
 
-1. Active
-    Backward compatible feature changes are allowed/accepted.
-    This will be then released by incrementing the MINOR version.
-2. Maintenance
-    Only backward compatible bug fixes and/or security fixes are allowed.
-    This will be then released by incrementing the PATCH version.
+1. Active  
+    * Backward compatible feature changes are allowed/accepted.
+    * This will be then released by incrementing the MINOR version.
+2. Maintenance  
+    * Only backward compatible bug fixes and/or security fixes are allowed.
+    * This will be then released by incrementing the PATCH version.
 
 **nvm**  
 To manage multiple node.js versions on our machine we can use "nvm" tool.  
