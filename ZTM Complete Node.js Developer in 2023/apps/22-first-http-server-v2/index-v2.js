@@ -51,7 +51,7 @@ const server = http.createServer((req, res) => {
     } else if (req.method === 'GET' &&
         urlItems[1] === 'friends'
     ) {
-        if (urlItems[3] === undefined) {
+        if (urlItems[2] === undefined) {
             res.statusCode = 200;
             res.setHeaders(new Headers({
                 'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ const server = http.createServer((req, res) => {
 
             res.end(JSON.stringify(friends));
         } else {
-            if (! friends[Number(urlItems[3])]) {
+            if (!friends[Number(urlItems[2])]) {
                 res.statusCode = 404;
                 res.setHeaders(new Headers({
                     'Content-Type': 'application/json',
@@ -72,11 +72,11 @@ const server = http.createServer((req, res) => {
                     'Content-Type': 'application/json',
                 }));
 
-                res.end(JSON.stringify(friends[Number(urlItems[3])]));
+                res.end(JSON.stringify(friends[Number(urlItems[2])]));
             }
         }
     } else if (req.method === 'GET' &&
-               urlItems[1] === 'plain-text'
+        urlItems[1] === 'plain-text'
     ) {
         res.statusCode = 200;
         res.setHeaders(new Headers({
@@ -85,7 +85,7 @@ const server = http.createServer((req, res) => {
 
         res.end('Hello Node.js HTTP Server!');
     } else if (req.method === 'GET' &&
-               urlItems[1] === 'json'
+        urlItems[1] === 'json'
     ) {
         res.statusCode = 200;
         res.setHeaders(new Headers({
@@ -96,7 +96,7 @@ const server = http.createServer((req, res) => {
             'message': 'Hello Node.js HTTP Server!'
         }));
     } else if (req.method === 'GET' &&
-               urlItems[1] === 'html'
+        urlItems[1] === 'html'
     ) {
         res.statusCode = 200;
         res.setHeaders(new Headers({
